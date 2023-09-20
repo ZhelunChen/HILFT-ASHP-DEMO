@@ -1,9 +1,13 @@
 # HILFT-ASHP-README
 
 ## Table of Contents
+
+Basic information:
 - [Introduction](#introduction)
 - [Repository Structure](#repository-structure)
 - [Data Description](#data-description)
+
+Detail information:
 - [Methodology](#methodology)
 - [Software Testbed](#software-testbed)
 - [Hardware Testbed](#hardware-testbed)
@@ -15,19 +19,19 @@
 This document provides comprehensive details of the datasets generated from the project titled, "Hardware-in-the-Loop Laboratory Performance Verification of Flexible Building Equipment in a Typical Commercial Building." This project is financially supported by the U.S. Department of Energy under grant number EE-0009153. These datasets are obtained from extensive hardware-in-the-loop (HIL) testing of an Air Source Heat Pump (ASHP) system at the National Institute of Standards and Technology (NIST), conducted under a diverse range of conditions and operational settings. 
 
 ## Repository Structure
-All datasets are stored in the [data](data) folder. This folder contains three levels of subfolders:
+**[data](data)** contains all datasets. This folder contains three levels of subfolders:
 - Level-1 (Atlanta, Buffalo, NewYork, Tucson): These folders represent different locations where testing were performed.
 - Level-2 (Eff, Shed, Shift): These folders represent various operational scenarios for the Air Source Heat Pump system.
 - Level-3 (Default, DenOcc, EnergySave, etc.): These folders represent specific case scenarios under the respective operational scenario. These scenarios will be further explained in [Test Scenarios](#test-scenarios).
 
-All other documents are stored in the [assets](assets) folder. These documents include related figures, metadata, and data schema.
+**[assets](assets)** contains related figures, metadata, and data schema.
 
 ## Data Description
 For each scenario, there are two files: 
-- `data.csv` file is the official release of the data associated with each scenario. The definition of each data point is documented in the [metadata](metadata.csv) file.
-- `raw.mat` file is the raw data which may include additional data associated with the HIL simulation, such as emulation data, controller parameters, and other simulation data.
+- `data.csv`: Official dataset. Refer to [metadata](metadata.csv) for data point definitions.
+- `raw.mat`: Raw HIL simulation data.
 
-`assets/ashp_brick.ttl` is the Brick model that represents the data points and their relationships. The following figure shows the data point relations created under the Brick model.
+Check `assets/ashp_brick.ttl` for the Brick model that represents the data points and their relationships. The following figure shows the data point relations created under the Brick model.
 
 ![The Schematic Diagram of the ASHP Brick Model](assets/ashp_brick_diagram.jpg)
 
@@ -44,7 +48,7 @@ The building (zone load) model was adapted from [Commercial Prototype Building M
 
 ## Hardware Testbed
 ### System Configuration
-The hardware testbed utilizes the NIST ASHP testing facility, which is equipped with two environmental chambers that emulate indoor and outdoor air conditions. Water-cooled, electrically heated AHUs are included in both chambers to create the outdoor weather conditions and the zone load. The system is a two-stage air source heat pump. Figure below depicts the system configureation.
+The system is a two-stage ASHP. Figure below depicts the system configureation. THe ASHP HILFT utilizes the NIST ASHP testing facility, which is equipped with two environmental chambers that emulate indoor and outdoor air conditions. Water-cooled, electrically heated AHUs are included in both chambers to create the outdoor weather conditions and the zone load. 
 
 ![Air Source Heat Pump](assets/ashp_diagram.jpg)
 
