@@ -15,12 +15,14 @@ The datasets in this repository were generated using an Air Source Heat Pump Har
 
 ## Building and System Information
 ### Building Model
-The building (zone load) model was adapted from commercial prototype building models. The highlighted zone, `Perimeter_ZN_1`, was selected for HIL study while other zones were served by ideal load systems within EnergyPlus. 
+The building (zone load) model was adapted from [Commercial Prototype Building Models](https://www.energycodes.gov/prototype-building-models). The highlighted zone, `Perimeter_ZN_1`, was selected for HIL study while other zones were served by ideal load systems within EnergyPlus. 
 
 ![Small Office Building](assets/small_office_building.png)
 
 ### System Configuration
 The hardware testbed utilizes the NIST ASHP testing facility, which is equipped with two environmental chambers that emulate indoor and outdoor air conditions. Water-cooled, electrically heated AHUs are included in both chambers to create the outdoor weather conditions and the zone load. The system is a two-stage air source heat pump. Figure below depicts the system configureation.
 
-![Air Source Heat Pump](assets/ashp_diagram.png)
+![Air Source Heat Pump](assets/ashp_diagram.jpg)
+
+
 
