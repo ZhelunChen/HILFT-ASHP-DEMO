@@ -34,9 +34,9 @@ This document provides comprehensive details of the datasets generated from the 
 
 ## Repository Structure
 **[data](data)** contains all datasets. This folder contains three levels of subfolders:
-- Level-1 (Atlanta, Buffalo, NewYork, Tucson): These folders represent different locations where testing were performed.
-- Level-2 (Eff, Shed, Shift): These folders represent various operational scenarios for the Air Source Heat Pump system.
-- Level-3 (Default, DenOcc, EnergySave, etc.): These folders represent specific case scenarios under the respective operational scenario. These scenarios are further explained in [Test Scenarios](#test-scenarios).
+- Level-1 (Atlanta, Buffalo, NewYork, Tucson): These folders present different locations where testing was performed.
+- Level-2 (Eff, Shed, Shift): These folders present various operational scenarios for the Air Source Heat Pump system.
+- Level-3 (Default, DenOcc, EnergySave, etc.): These folders present specific case scenarios under the respective operational scenario. These scenarios are further explained in [Test Scenarios](#test-scenarios).
 
 **[assets](assets)** contains related figures, metadata, and data schema.
 
@@ -45,12 +45,12 @@ For each scenario, there are two files:
 - `data.csv`: Official dataset. Refer to [metadata](assets/metadata.csv) for data point definitions.
 - `raw.mat`: Raw HIL simulation data.
 
-Check `assets/ashp_brick.ttl` for the Brick model that represents the data points and their relationships. The following figure shows the data point relations created under the Brick model.
+See `assets/ashp_brick.ttl` for the Brick model that represents the data points and their relationships. The following figure shows the data point relationships created under the Brick model.
 
 ![The Schematic Diagram of the ASHP Brick Model](assets/ashp_brick_diagram.jpg)
 
 ## Methodology
-The datasets in this repository were generated using an Air Source Heat Pump Hardware-In-the-Loop Flexible load Testbed (i.e., ASHP HILFT). The figure below depicts the overall framework of a HILFT, which mainly includes three parts: a virtual building model, a Grid-interactive Efficient Building (GEB) control model, and a hardware testbed. The virtual building model further includes a zone load model, an occupant comfort & behavior model, and an airflow model. More details about the development and integration of the HILFT can be found in [^1].
+The datasets in this repository were generated using an Air Source Heat Pump Hardware-In-the-Loop Flexible load Testbed (i.e., ASHP HILFT). The figure below depicts the overall framework of a HILFT, which includes three parts: a virtual building model, a Grid-interactive Efficient Building (GEB) control model, and a hardware testbed. The virtual building model further includes a zone load model, an occupant comfort & behavior model, and an airflow model. More details about the development and integration of the HILFT can be found in [^1].
 
 ![Framework of the HILFT and Associated Data Flow Schema](assets/hil_approach.jpg)
 
@@ -65,12 +65,12 @@ The occupant behavior model was adapted from Langevin et al. [^2]. Indoor airflo
 
 ## Hardware Testbed
 ### System Configuration
-The system is a two-stage ASHP. Figure below depicts the system configureation. THe ASHP HILFT utilizes the NIST ASHP testing facility, which is equipped with two environmental chambers that emulate indoor and outdoor air conditions. Water-cooled, electrically heated AHUs are included in both chambers to create the outdoor weather conditions and the zone load. 
+The system is a two-stage ASHP. The figure below depicts the system configuration. THe ASHP HILFT utilizes the NIST ASHP testing facility, which is equipped with two environmental chambers that emulate indoor and outdoor air conditions. Water-cooled, electrically heated AHUs are included in both chambers to create the outdoor weather conditions and the zone load. 
 
 ![Air Source Heat Pump](assets/ashp_diagram.jpg)
 
 ### Local Control Sequence
-The heat pump system is controlled based on the zone return air temperature. When return air temperature is 0.28 °C (0.5 °F) higher than the cooling setpoint, the heat pump operates in low-speed mode until the temperature drops below the cooling setpoint. When return air temperature exceeds 0.56 °C (1 °F) above the cooling setpoint, the heat pump operates in high-speed mode until the temperature drops below 0.28 °C (0.5 °F) above the cooling setpoint and then switches back to low-speed mode.
+The heat pump system is controlled based on the zone return air temperature. When return air temperature is 0.28 °C (0.5 °F) higher than the cooling setpoint, the heat pump operates in low-speed mode until the temperature drops below the cooling setpoint. When return air temperature is 0.56 °C (1 °F) above the cooling setpoint, the heat pump operates in high-speed mode until the temperature drops below 0.28 °C (0.5 °F) above the cooling setpoint and then switches back to low-speed mode.
 
 ## Test Scenarios
 This data repository includes real-time HIL ASHP testing data considering:
@@ -78,7 +78,7 @@ This data repository includes real-time HIL ASHP testing data considering:
 - Grid-interactive Efficient Building (GEB) scenarios: Efficiency (Eff), Load Shedding (Shed), and Load Shifting (Shift); 
 - Other variations: weather condition, control strategy, building type, occupancy, occupant behavior, and thermal energy storage (TES). 
 
-The **Default** cases (i.e., the third column of the table) were tested with typical summer weather, using rule-based control (RBC) strategy, with a typical building type, occupancy, and occupant behaviors, and without Thermal Energy Storage (TES). Each subsequent column header points to the deviation from this default setting.
+The **Default** cases (i.e., the third column of the table) were tested with typical summer weather, using a rule-based control (RBC) strategy, with a typical building type, occupancy, and occupant behaviors, and without TES. Each subsequent column header points to the deviation from this default setting.
 
 | Location | GEB Scenario | Default | ExtrmSum | TypShldr | ExtrmWin | MPC | STD2019 | DenOcc | EnergySave | TES | MPC&TES |
 | ---      | ---          | ---     | ---      | ---      | ---      | --- | ---     | ---    | ---        | --- | ---     |
@@ -99,14 +99,14 @@ The **Default** cases (i.e., the third column of the table) were tested with typ
 - Weather: Typical summer
 - Building type: ASHRAE 90.1-2004
 - Occupancy: 7
-- Occupant behaviors: 4 (57%) occupants care energy saving with 80% restriction probability
+- Occupant behaviors: 4 (57%) occupants care about saving energy with 80% restriction probability
 - Thermostat (dual) setpoints:
   - Occupied: 68 degF - 78 degF
   - Setback: 55 degF - 90 degF
 - Control strategy: Rule-based control
   - Eff: No reset
   - Shed: Relax setpoints by 2 degF during peak
-  - Shift: Precool or preheat by x degF for y hours, then relax setpoints by 2 degF during peak. The actual values of x and y vary by scneario.
+  - Shift: Precool or preheat by x degF for y hours, then relax setpoints by 2 degF during peak. The actual values of x and y vary by scenario.
 - Thermal energy storage: None
 
 ### ExtrmSum
@@ -124,8 +124,8 @@ Same as **Default** except:
 ### MPC
 Same as **Default** except:
 - Control strategy: Model Predictive Control
-  - Eff: Minimize overall energy use during predictive horizon
-  - Shed: Minimize peak hours energy use
+  - Eff: Minimize overall energy use during prediction horizon
+  - Shed: Minimize energy use during peak hours energy use
   - Shift: Minimize whole-day time-of-use cost
 
 ### STD2019
@@ -138,7 +138,7 @@ Same as **Default** except:
 
 ### EnergySave
 Same as **Default** except:
-- Occupant behaviors: 6 (86%) occupants care energy saving with 90% restriction probability
+- Occupant behaviors: 6 (86%) occupants care about saving energy with 90% restriction probability
 
 ### TES
 Same as **Default** except:
