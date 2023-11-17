@@ -17,7 +17,7 @@
 smallOff:grid_signal_type a brick:Status ;
 	brick:hasUnits unit:UNITLESS ;
 	rdfs:comment "Grid signal type (0 no signal, 1 shedding request, 2 time-of-use price, 3 mod)" .
-smallOff:grid_signal_shed a brick:Status ;
+smallOff:grid_signal_shed a brick:Load_Shed_Status ;
 	brick:hasUnits unit:UNITLESS ;
 	rdfs:comment "Grid signal shedding request (0 - no request, 1 - request)" .
 smallOff:grid_signal_price a brick:Status ; 
@@ -26,8 +26,14 @@ smallOff:grid_signal_price a brick:Status ;
 
 # HVAC SYSTEM
 smallOff:ASHP a brick:AHU ;
-	brick:hasPoint smallOff:sa_temp, smallOff:sa_temp_dp, smallOff:sa_flow,
-	smallOff:ref_flow, smallOff:stat, smallOff:stg, smallOff:id_power, smallOff:od_power .
+	brick:hasPoint smallOff:sa_temp,
+		smallOff:sa_temp_dp,
+		smallOff:sa_flow,
+		smallOff:ref_flow,
+		smallOff:stat,
+		smallOff:stg,
+		smallOff:id_power,
+		smallOff:od_power .
 	
 smallOff:sa_temp a brick:Supply_Air_Temperature_Sensor ;
 	brick:hasUnits unit:DEG_F .
@@ -49,8 +55,11 @@ smallOff:od_power a brick:Power_Sensor ;
 
 # SITE
 smallOff:site_smallOff a brick:site ;
-	brick:isLocationOf smallOff:building_smallOff ;
-	brick:hasPoint smallOff:oa_temp, smallOff:oa_temp_dp, smallOff:oa_temp_sim, smallOff:oa_temp_dp_sim .
+	brick:isLocationOf smallOff:bldg_smallOff ;
+	brick:hasPoint smallOff:oa_temp,
+		smallOff:oa_temp_dp,
+		smallOff:oa_temp_sim,
+		smallOff:oa_temp_dp_sim .
 	
 smallOff:oa_temp a brick:Outside_Air_Temperature_Sensor ;
 	brick:hasUnits unit:DEG_F .
@@ -61,19 +70,18 @@ smallOff:oa_temp_sim a brick:Outside_Air_Temperature_Sensor ;
 smallOff:oa_temp_dp_sim a brick:Outside_Air_Dewpoint_Sensor ;
 	brick:hasUnits unit:DEG_F .
 
-
-# ARCHITECTURAL LAYOUT
-smallOff:building_smallOff a brick:Building ;
+# BUILDING
+smallOff:bldg_smallOff a brick:Building ;
 	brick:isLocationOf smallOff:Zone .
 
+# ZONE
 smallOff:zn a brick:HVAC_Zone ;
     brick:isFedBy smallOff:ASHP ;
-	brick:Feeds smallOff:ASHP ;
-	brick:has_Room smallOff:officeRoom .
-
-smallOff:officeRoom a brick:Room ;
-	brick:hasPoint smallOff:zn_temp, smallOff:zn_temp_dp, smallOff:local_pres, smallOff:zn_temp_cspt, smallOff:zn_temp_hspt,
-		smallOff:zn_temp_sim, smallOff:zn_temp_dp_sim .
+	brick:hasPoint smallOff:zn_temp, 
+		smallOff:zn_temp_dp,
+		smallOff:local_pres,
+		smallOff:zn_temp_sim,
+		smallOff:zn_temp_dp_sim .
 	
 smallOff:zn_temp a brick:Zone_Air_Temperature_Sensor ;
 	brick:hasUnits unit:DEG_F .
@@ -81,22 +89,26 @@ smallOff:zn_temp_dp a brick:Zone_Air_Dewpoint_Sensor ;
 	brick:hasUnits unit:DEG_F .
 smallOff:local_pres a brick:Pressure_Sensor ;
 	brick:hasUnits unit:IN_HG .
-smallOff:zn_temp_cspt a brick:Zone_Air_Cooling_Temperature_Setpoint ;
-	brick:hasUnits unit:DEG_F .
-smallOff:zn_temp_hspt a brick:Zone_Air_Heating_Temperature_Setpoint ;
-	brick:hasUnits unit:DEG_F .
 smallOff:zn_temp_sim a brick:Zone_Air_Temperature_Sensor ;
 	brick:hasUnits unit:DEG_F .
 smallOff:zn_temp_dp_sim a brick:Zone_Air_Dewpoint_Sensor ;
 	brick:hasUnits unit:DEG_F .
 
-# OCCUPANTS
+# THERMOSTAT
 smallOff:zn_tstat a brick:Thermostat ;
+	brick:isPartOf smallOff:ASHP ;
+	brick:hasLocation smallOff:zn ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
 	occ:degreeOfControl [  brick:value occ:StagedControl ] ;
 	occ:isAccessibleBy smallOff:occ01, smallOff:occ02, smallOff:occ03, smallOff:occ04, smallOff:occ05, smallOff:occ06, smallOff:occ07 ;
 	brick:hasPoint smallOff:zn_temp_cspt, smallOff:zn_temp_hspt .
 
+smallOff:zn_temp_cspt a brick:Zone_Air_Cooling_Temperature_Setpoint ;
+	brick:hasUnits unit:DEG_F .
+smallOff:zn_temp_hspt a brick:Zone_Air_Heating_Temperature_Setpoint ;
+	brick:hasUnits unit:DEG_F .
+
+# OCCUPANTS
 smallOff:occ01_loc a brick:Location ;
 	brick:isLocationof smallOff:occ01_pheater, smallOff:occ01_pfan, smallOff:occ01_pheater_meter, smallOff:occ01_pfan_meter ;
 	occ:isAssignedLocationOf smallOff:occ01 ;
@@ -144,8 +156,6 @@ smallOff:occ01_clo a occ:clothingInsulationRange ;
 	brick:hasUnits occ:Clo .
 smallOff:occ01_act a occ:OccupantActivityLevel ;
 	rdfs:comment "0 sitting, 1 walking".
-smallOff:occ01_accept_low a occ:OccupantAttitudeStream . # Occupant's lower thermal acceptability range bound, (-3,3)
-smallOff:occ01_accept_up a occ:OccupantAttitudeStream . # Occupant's upper thermal acceptability range bound, (-3,3)
 smallOff:occ01_sensation a occ:OccupantThermalSensation ;
 	brick:hasUnits unit:UNITLESS ;
 	rdfs:comment "PMV value, [-3,3]" .
