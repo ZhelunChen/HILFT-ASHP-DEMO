@@ -45,7 +45,7 @@ For each scenario, there are two files:
 - `data.csv`: Official dataset. Refer to [metadata](assets/metadata.csv) for data point definitions.
 - `raw.mat`: Raw HIL simulation data.
 
-See `assets/ashp_brick.ttl` for the Brick model that represents the data points and their relationships. The following figure shows the data point relationships created under the Brick model.
+See [assets/ashp_brick.ttl](assets/ashp_brick.ttl) and [assets/ashp_brick_denocc.ttl](assets/ashp_brick_denocc.ttl) for the Brick models that represent the data points and their relationships. Specifically, the `_denocc` version is associated with the data tested under the dense occupancy `DenOcc` scenario. The following figure shows the data point relationships created under the Brick models.
 
 ![The Schematic Diagram of the ASHP Brick Model](assets/ashp_brick_diagram.jpg)
 

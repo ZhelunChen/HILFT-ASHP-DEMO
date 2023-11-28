@@ -257,7 +257,7 @@ occ:OccupantMetabolicRate a owl:Class,
 occ:OccupantThermalSensation a owl:Class,
         sh:NodeShape ;
     rdfs:subClassOf occ:OccupantAttitudeStream ;
-    skos:definition "A timeseries of an occupant's thermal sensation." .
+    skos:definition "A timeseries of an occupant's thermal sensation. Defined by ASHRAE Standard 55 seven-point thermal sensation: -3 (cold) to +3 (hot)." .
 
 occ:Occupant_Location_Sensor a owl:Class,
         sh:NodeShape ;
