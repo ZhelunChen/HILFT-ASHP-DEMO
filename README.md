@@ -82,15 +82,15 @@ The **Default** cases (i.e., the third column of the table) were tested with typ
 
 | Location | GEB Scenario | Default | ExtrmSum | TypShldr | ExtrmWin | MPC | STD2019 | DenOcc | EnergySave | TES | MPC&TES |
 | ---      | ---          | ---     | ---      | ---      | ---      | --- | ---     | ---    | ---        | --- | ---     |
-| Atlanta  | Eff          | x       | x        | x        | x        | x   | x       | x      | x          |     |         |
+| Atlanta  | Eff          | x       | x        | x        |          | x   | x       | x      | x          |     |         |
 |          | Shed         | x       | x        |          |          | x   | x       | x      | x          |     |         |
 |          | Shift        | x       | x        |          |          | x   | x       | x      | x          | x   | x       |
-| Buffalo  | Eff          | x       | x        | x        | x        | x   | x       | x      | x          |     |         |
-|          | Shed         | x       | x        |          | x        | x   | x       | x      | x          |     |         |
-|          | Shift        | x       | x        |          | x        | x   | x       | x      | x          | x   | x       |
-| New York | Eff          | x       | x        | x        | x        | x   | x       | x      | x          |     |         |
-|          | Shed         | x       | x        | x        | x        | x   | x       | x      | x          |     |         |
-|          | Shift        | x       | x        | x        | x        | x   | x       | x      | x          | x   | x       |
+| Buffalo  | Eff          | x       | x        | x        |          | x   | x       | x      | x          |     |         |
+|          | Shed         | x       | x        |          |          | x   | x       | x      | x          |     |         |
+|          | Shift        | x       | x        |          |          | x   | x       | x      | x          | x   | x       |
+| New York | Eff          | x       | x        | x        |          | x   | x       | x      | x          |     |         |
+|          | Shed         | x       | x        | x        |          | x   | x       | x      | x          |     |         |
+|          | Shift        | x       | x        | x        |          | x   | x       | x      | x          | x   | x       |
 | Tucson   | Eff          | x       | x        | x        | x        | x   | x       | x      | x          |     |         |
 |          | Shed         | x       | x        | x        | x        | x   | x       | x      | x          |     |         |
 |          | Shift        | x       | x        | x        | x        | x   | x       | x      | x          | x   | x       |
