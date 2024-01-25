@@ -118,7 +118,7 @@ smallOff:occ01_pres a occ:Occupancy_Presence_Sensor ;
 	brick:hasUnit unit:UNITLESS .
 
 # PORTABLE EQUIPMENT
-smallOff:smallOff:occ01_pheater a occ:Portable_Heater ;
+smallOff:occ01_pheater a occ:Portable_Heater ;
 	occ:isAccessibleBy smallOff:occ01 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
@@ -127,7 +127,7 @@ smallOff:smallOff:occ01_pheater a occ:Portable_Heater ;
 smallOff:occ01_ph_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
-smallOff:smallOff:occ01_pfan a occ:Portable_Fan ;
+smallOff:occ01_pfan a occ:Portable_Fan ;
 	occ:isAccessibleBy smallOff:occ01 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
@@ -196,7 +196,7 @@ smallOff:occ02_pres a occ:Occupancy_Presence_Sensor ;
 	brick:hasUnit unit:UNITLESS .
 
 # PORTABLE EQUIPMENT
-smallOff:smallOff:occ02_pheater a occ:Portable_Heater ;
+smallOff:occ02_pheater a occ:Portable_Heater ;
 	occ:isAccessibleBy smallOff:occ02 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
@@ -205,7 +205,7 @@ smallOff:smallOff:occ02_pheater a occ:Portable_Heater ;
 smallOff:occ02_ph_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
-smallOff:smallOff:occ02_pfan a occ:Portable_Fan ;
+smallOff:occ02_pfan a occ:Portable_Fan ;
 	occ:isAccessibleBy smallOff:occ02 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
@@ -274,7 +274,7 @@ smallOff:occ03_pres a occ:Occupancy_Presence_Sensor ;
 	brick:hasUnit unit:UNITLESS .
 
 # PORTABLE EQUIPMENT
-smallOff:smallOff:occ03_pheater a occ:Portable_Heater ;
+smallOff:occ03_pheater a occ:Portable_Heater ;
 	occ:isAccessibleBy smallOff:occ03 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
@@ -283,7 +283,7 @@ smallOff:smallOff:occ03_pheater a occ:Portable_Heater ;
 smallOff:occ03_ph_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
-smallOff:smallOff:occ03_pfan a occ:Portable_Fan ;
+smallOff:occ03_pfan a occ:Portable_Fan ;
 	occ:isAccessibleBy smallOff:occ03 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
@@ -352,7 +352,7 @@ smallOff:occ04_pres a occ:Occupancy_Presence_Sensor ;
 	brick:hasUnit unit:UNITLESS .
 
 # PORTABLE EQUIPMENT
-smallOff:smallOff:occ04_pheater a occ:Portable_Heater ;
+smallOff:occ04_pheater a occ:Portable_Heater ;
 	occ:isAccessibleBy smallOff:occ04 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
@@ -361,7 +361,7 @@ smallOff:smallOff:occ04_pheater a occ:Portable_Heater ;
 smallOff:occ04_ph_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
-smallOff:smallOff:occ04_pfan a occ:Portable_Fan ;
+smallOff:occ04_pfan a occ:Portable_Fan ;
 	occ:isAccessibleBy smallOff:occ04 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
@@ -430,7 +430,7 @@ smallOff:occ05_pres a occ:Occupancy_Presence_Sensor ;
 	brick:hasUnit unit:UNITLESS .
 
 # PORTABLE EQUIPMENT
-smallOff:smallOff:occ05_pheater a occ:Portable_Heater ;
+smallOff:occ05_pheater a occ:Portable_Heater ;
 	occ:isAccessibleBy smallOff:occ05 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
@@ -439,7 +439,7 @@ smallOff:smallOff:occ05_pheater a occ:Portable_Heater ;
 smallOff:occ05_ph_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
-smallOff:smallOff:occ05_pfan a occ:Portable_Fan ;
+smallOff:occ05_pfan a occ:Portable_Fan ;
 	occ:isAccessibleBy smallOff:occ05 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
@@ -508,7 +508,7 @@ smallOff:occ06_pres a occ:Occupancy_Presence_Sensor ;
 	brick:hasUnit unit:UNITLESS .
 
 # PORTABLE EQUIPMENT
-smallOff:smallOff:occ06_pheater a occ:Portable_Heater ;
+smallOff:occ06_pheater a occ:Portable_Heater ;
 	occ:isAccessibleBy smallOff:occ06 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
@@ -517,7 +517,7 @@ smallOff:smallOff:occ06_pheater a occ:Portable_Heater ;
 smallOff:occ06_ph_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
-smallOff:smallOff:occ06_pfan a occ:Portable_Fan ;
+smallOff:occ06_pfan a occ:Portable_Fan ;
 	occ:isAccessibleBy smallOff:occ06 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
@@ -586,7 +586,7 @@ smallOff:occ07_pres a occ:Occupancy_Presence_Sensor ;
 	brick:hasUnit unit:UNITLESS .
 
 # PORTABLE EQUIPMENT
-smallOff:smallOff:occ07_pheater a occ:Portable_Heater ;
+smallOff:occ07_pheater a occ:Portable_Heater ;
 	occ:isAccessibleBy smallOff:occ07 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
@@ -595,7 +595,7 @@ smallOff:smallOff:occ07_pheater a occ:Portable_Heater ;
 smallOff:occ07_ph_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
-smallOff:smallOff:occ07_pfan a occ:Portable_Fan ;
+smallOff:occ07_pfan a occ:Portable_Fan ;
 	occ:isAccessibleBy smallOff:occ07 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
@@ -664,7 +664,7 @@ smallOff:occ08_pres a occ:Occupancy_Presence_Sensor ;
 	brick:hasUnit unit:UNITLESS .
 
 # PORTABLE EQUIPMENT
-smallOff:smallOff:occ08_pheater a occ:Portable_Heater ;
+smallOff:occ08_pheater a occ:Portable_Heater ;
 	occ:isAccessibleBy smallOff:occ08 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
@@ -673,7 +673,7 @@ smallOff:smallOff:occ08_pheater a occ:Portable_Heater ;
 smallOff:occ08_ph_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
-smallOff:smallOff:occ08_pfan a occ:Portable_Fan ;
+smallOff:occ08_pfan a occ:Portable_Fan ;
 	occ:isAccessibleBy smallOff:occ08 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
@@ -742,7 +742,7 @@ smallOff:occ09_pres a occ:Occupancy_Presence_Sensor ;
 	brick:hasUnit unit:UNITLESS .
 
 # PORTABLE EQUIPMENT
-smallOff:smallOff:occ09_pheater a occ:Portable_Heater ;
+smallOff:occ09_pheater a occ:Portable_Heater ;
 	occ:isAccessibleBy smallOff:occ09 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
@@ -751,7 +751,7 @@ smallOff:smallOff:occ09_pheater a occ:Portable_Heater ;
 smallOff:occ09_ph_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
-smallOff:smallOff:occ09_pfan a occ:Portable_Fan ;
+smallOff:occ09_pfan a occ:Portable_Fan ;
 	occ:isAccessibleBy smallOff:occ09 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
@@ -820,7 +820,7 @@ smallOff:occ10_pres a occ:Occupancy_Presence_Sensor ;
 	brick:hasUnit unit:UNITLESS .
 
 # PORTABLE EQUIPMENT
-smallOff:smallOff:occ10_pheater a occ:Portable_Heater ;
+smallOff:occ10_pheater a occ:Portable_Heater ;
 	occ:isAccessibleBy smallOff:occ10 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
@@ -829,7 +829,7 @@ smallOff:smallOff:occ10_pheater a occ:Portable_Heater ;
 smallOff:occ10_ph_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
-smallOff:smallOff:occ10_pfan a occ:Portable_Fan ;
+smallOff:occ10_pfan a occ:Portable_Fan ;
 	occ:isAccessibleBy smallOff:occ10 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
@@ -898,7 +898,7 @@ smallOff:occ11_pres a occ:Occupancy_Presence_Sensor ;
 	brick:hasUnit unit:UNITLESS .
 
 # PORTABLE EQUIPMENT
-smallOff:smallOff:occ11_pheater a occ:Portable_Heater ;
+smallOff:occ11_pheater a occ:Portable_Heater ;
 	occ:isAccessibleBy smallOff:occ11 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
@@ -907,7 +907,7 @@ smallOff:smallOff:occ11_pheater a occ:Portable_Heater ;
 smallOff:occ11_ph_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
-smallOff:smallOff:occ11_pfan a occ:Portable_Fan ;
+smallOff:occ11_pfan a occ:Portable_Fan ;
 	occ:isAccessibleBy smallOff:occ11 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
