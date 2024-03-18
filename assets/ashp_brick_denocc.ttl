@@ -77,7 +77,7 @@ smallOff:zn_temp a brick:Zone_Air_Temperature_Sensor ;
 smallOff:zn_temp_dp a brick:Zone_Air_Dewpoint_Sensor ;
 	brick:hasUnit unit:DEG_F .
 smallOff:local_pres a brick:Pressure_Sensor ;
-	brick:hasUnit unit:IN_HG .
+	brick:hasUnit unit:IN_H2O .
 smallOff:zn_temp_sim a brick:Zone_Air_Temperature_Sensor ;
 	brick:hasUnit unit:DEG_F .
 smallOff:zn_temp_dp_sim a brick:Zone_Air_Dewpoint_Sensor ;
