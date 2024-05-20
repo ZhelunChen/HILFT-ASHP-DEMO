@@ -52,13 +52,13 @@ See [assets/HIL_ASHP_Brick_v1-3-0.ttl](assets/HIL_ASHP_Brick_v1-3-0.ttl) and [as
 ## Methodology
 The datasets in this repository were generated using an Air Source Heat Pump Hardware-In-the-Loop Flexible load Testbed (i.e., ASHP HILFT). The figure below depicts the overall framework of a HILFT, which includes three parts: a virtual building model, a Grid-interactive Efficient Building (GEB) control model, and a hardware testbed. The virtual building model further includes a zone load model, an occupant comfort & behavior model, and an airflow model. More details about the development and integration of the HILFT can be found in [^1].
 
-![Framework of the HILFT and Associated Data Flow Schema](assets/hil_approach.jpg)
+![Framework of the HILFT and Associated Data Flow Schema](assets/HIL_Approach.jpg)
 
 ## Software Testbed
 ### Zone Load Model
 The zone load model was adapted from [Commercial Prototype Building Models](https://www.energycodes.gov/prototype-building-models). The highlighted zone, **Perimeter_ZN_1**, was selected for HIL study while other zones were served by ideal load systems within EnergyPlus. 
 
-![Small Office Building](assets/small_office_building.png)
+![Small Office Building](assets/Small_Office_Building.png)
 
 ### Occupant Behaviors and Airflow Simulation
 The occupant behavior model was adapted from Langevin et al. [^2]. Indoor airflow simulation was used to enhance the simulation of the local ambient environment of each occupant agent in the model, using the approach documented in [^3].
