@@ -1,0 +1,591 @@
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix bsh: <https://brickschema.org/schema/BrickShape#> .
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix dcterms1: <http://purl.org/dc/terms#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix occ: <https://brickschema.org/schema/Brick/extension/occupancy#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix qkdv: <http://qudt.org/vocab/dimensionvector/> .
+@prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdo: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+occ:18_25 a occ:AgeRange ;
+    brick:hasUnit unit:YR ;
+    occ:lowerBound 18 ;
+    occ:upperBound 25 .
+
+occ:26_34 a occ:AgeRange ;
+    brick:hasUnit unit:YR ;
+    occ:lowerBound 26 ;
+    occ:upperBound 34 .
+
+occ:35_50 a occ:AgeRange ;
+    brick:hasUnit unit:YR ;
+    occ:lowerBound 50 ;
+    occ:upperBound 35 .
+
+occ:51_plus a occ:AgeRange ;
+    brick:hasUnit unit:YR ;
+    occ:lowerBound 51 .
+
+occ:Adjustable a occ:OccupantAccessibilityLevel ;
+    skos:definition "Device is accessible to occupants for adjustment" .
+
+occ:Age a sh:NodeShape ;
+    skos:definition "Age of the individual" ;
+    sh:property [ sh:datatype xsd:positiveInteger ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path brick:value ],
+        [ sh:in ( unit:YR unit:MO unit:DAY unit:HR unit:MIN ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path brick:hasUnit ] ;
+    sh:targetObjectsOf occ:age .
+
+occ:AutomaticMode a occ:ModeOfControl ;
+    skos:definition "Device is controlled automatically, according to some schedule" .
+
+occ:BlindsActionStream a owl:Class,
+        sh:NodeShape ;
+    rdfs:subClassOf occ:OccupantActionStream ;
+    sh:property [ dash:hasValueWithClass occ:Window ;
+            rdfs:comment "Action should be associated with a window" ;
+            sh:path brick:isPointOf ] .
+
+occ:BusinessClothing a occ:ClothingInsulationRange ;
+    brick:hasUnit occ:Clo ;
+    occ:lowerBound occ:0.5 ;
+    occ:upperBound occ:1.0 .
+
+occ:CasualClothing a occ:ClothingInsulationRange ;
+    brick:hasUnit occ:Clo ;
+    occ:lowerBound occ:0.5 ;
+    occ:upperBound occ:1.0 .
+
+occ:CeilingFanActionStream a owl:Class,
+        sh:NodeShape ;
+    rdfs:subClassOf occ:OccupantActionStream ;
+    sh:property [ dash:hasValueWithClass occ:Ceiling_Fan ;
+            rdfs:comment "Action should be associated with a ceiling fan" ;
+            sh:path brick:isPointOf ],
+        [ dash:hasValueWithClass occ:Ceiling_Fan ;
+            rdfs:comment "Action should be associated with a ceiling fan" ;
+            sh:path brick:isPointOf ] .
+
+occ:ClimateZone1 a occ:ASHRAEClimateZone ;
+    skos:definition "Very Hot – Humid(1A) with IP Units 9000 < CDD50ºF and SI Units 5000 < CDD10ºC or Dry(1B) with IP Units 9000 < CDD50ºF and SI Units 5000 < CDD10ºC" .
+
+occ:ClimateZone2 a occ:ASHRAEClimateZone ;
+    skos:definition "Hot – Humid(2A) with IP Units 6300 < CDD50ºF ≤ 9000 and SI Units 3500 < CDD10ºC ≤ 5000 or Dry(2B) with IP Units 6300 < CDD50ºF ≤ 9000 and SI Units 3500 < CDD10ºC ≤ 5000" .
+
+occ:ClimateZone3 a occ:ASHRAEClimateZone ;
+    skos:definition "Warm – Humid(3A) with IP Units 4500 < CDD50ºF ≤ 6300 and SI Units 2500 < CDD10ºC < 3500, or Dry(3B) with IP Units 4500 < CDD50ºF ≤ 6300 and SI Units 2500 < CDD10ºC < 3500, or Warm – Marine(3C) with IP Units CDD50ºF ≤ 4500 AND HDD65ºF ≤ 3600 and SI Units CDD10ºC ≤ 2500 AND HDD18ºC ≤ 2000" .
+
+occ:ClimateZone4 a occ:ASHRAEClimateZone ;
+    skos:definition "Mixed – Humid(4A) with IP Units CDD50ºF ≤ 4500 AND 3600 < HDD65ºF ≤ 5400 and SI Units CDD10ºC ≤ 2500 AND HDD18ºC ≤ 3000 or  Dry(4B) with IP Units CDD50ºF ≤ 4500 AND 3600 < HDD65ºF ≤ 5400 and SI Units CDD10ºC ≤ 2500 AND HDD18ºC ≤ 3000 or  Mixed – Marine(4C) with IP Units 3600 < HDD65ºF ≤ 5400 and SI Units 2000 < HDD18ºC ≤ 3000" .
+
+occ:ClimateZone5 a occ:ASHRAEClimateZone ;
+    skos:definition "Cool– Humid(5A) with IP Units 5400 < HDD65ºF ≤ 7200 and SI Units 3000 < HDD18ºC ≤ 4000 or  Dry(5B) with IP Units 5400 < HDD65ºF ≤ 7200 and SI Units 3000 < HDD18ºC ≤ 4000 or  Marine(5C) with IP Units 5400 < HDD65ºF ≤ 7200 and SI Units 3000 < HDD18ºC ≤ 4000" .
+
+occ:ClimateZone6 a occ:ASHRAEClimateZone ;
+    skos:definition " Cold – Humid(6A) with IP Units 7200 < HDD65ºF ≤ 9000 and SI Units 4000 < HDD18ºC ≤ 5000 or  Dry(6B) with IP Units 7200 < HDD65ºF ≤ 9000 and SI Units 4000 < HDD18ºC ≤ 5000" .
+
+occ:ClimateZone7 a occ:ASHRAEClimateZone ;
+    skos:definition "Very Cold with IP Units 9000 < HDD65ºF ≤ 12600 and SI Units 5000 < HDD18ºC ≤ 7000 ." .
+
+occ:ClimateZone8 a occ:ASHRAEClimateZone ;
+    skos:definition "Subarctic with IP Units 12600 < HDD65ºF and SI Units 7000 < HDD18ºC ." .
+
+occ:ClothingInsulation a sh:NodeShape ;
+    skos:definition "Clothing insulation of the individual" ;
+    sh:property [ sh:datatype xsd:float ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path brick:value ],
+        [ sh:hasValue occ:Clo ;
+            sh:path brick:hasUnit ] ;
+    sh:targetObjectsOf occ:clothingInsulation .
+
+occ:ComputerActionStream a owl:Class,
+        sh:NodeShape ;
+    rdfs:subClassOf occ:OccupantActionStream ;
+    sh:property [ dash:hasValueWithClass occ:Computer ;
+            rdfs:comment "Action should be associated with a computer" ;
+            sh:path brick:isPointOf ] .
+
+occ:Connected_Device_Count a owl:Class,
+        sh:NodeShape ;
+    rdfs:subClassOf brick:Occupancy_Sensor ;
+    skos:definition "The number of devices connected to a WiFi AP" ;
+    sh:property [ sh:class brick:Wireless_Access_Point ;
+            sh:path brick:isPointOf ] .
+
+occ:ContinuousControl a occ:DegreeOfControl ;
+    skos:definition "Device supports a continuous range of control inputs (e.g. 0-100%)" .
+
+occ:CoolerPreference a occ:ThermalComfortPreference ;
+    skos:definition "A preference for environmental conditions that are cooler than neutral" .
+
+occ:Desk a owl:Class ;
+    rdfs:subClassOf brick:Furniture .
+
+occ:Desktop_Light a owl:Class ;
+    rdfs:label "Desktop Light" ;
+    rdfs:subClassOf occ:Personal_Device ;
+    skos:definition "A lighting equipment on the desktop to provide illuminance" .
+
+occ:DoorActionStream a owl:Class,
+        sh:NodeShape ;
+    rdfs:subClassOf occ:OccupantActionStream ;
+    sh:property [ dash:hasValueWithClass occ:Door ;
+            rdfs:comment "Action should be associated with a door" ;
+            sh:path brick:isPointOf ] .
+
+occ:DynamicMode a occ:ModeOfControl ;
+    skos:definition "Device is controlled by a dynamic process, e.g. via a grid signal" .
+
+occ:Enumeration a owl:Class .
+
+occ:HeavyClothing a occ:ClothingInsulationRange ;
+    brick:hasUnit occ:Clo ;
+    occ:lowerBound occ:1.0 .
+
+occ:InferAccessibleRule a sh:NodeShape ;
+    sh:rule [ a sh:SPARQLRule ;
+            sh:condition [ sh:property [ sh:minCount 1 ;
+                            sh:path occ:isAccessibleBy ] ] ;
+            sh:construct """
+        CONSTRUCT {
+            $this   occ:occupantAccessibility [
+                brick:value  occ:Adjustable
+            ]
+        } WHERE {}
+        """ ;
+            sh:prefixes brick:,
+                occ: ] ;
+    sh:targetClass brick:Equipment .
+
+occ:InferSharedRule a sh:NodeShape ;
+    sh:rule [ a sh:SPARQLRule ;
+            sh:condition [ sh:property [ sh:minCount 2 ;
+                            sh:path occ:isAccessibleBy ] ] ;
+            sh:construct """
+        CONSTRUCT {
+            $this   occ:occupantAccessibility [
+                brick:value  occ:Shared
+            ]
+        } WHERE {}
+        """ ;
+            sh:prefixes brick:,
+                occ: ] ;
+    sh:targetClass brick:Equipment .
+
+occ:LightClothing a occ:ClothingInsulationRange ;
+    brick:hasUnit occ:Clo ;
+    occ:lowerBound occ:0.0 ;
+    occ:upperBound occ:0.3 .
+
+occ:LightingActionStream a owl:Class,
+        sh:NodeShape ;
+    rdfs:subClassOf occ:OccupantActionStream ;
+    sh:property [ dash:hasValueWithClass brick:Lighting_Equipment ;
+            rdfs:comment "Action should be associated with a lighting equipment" ;
+            sh:path brick:isPointOf ] .
+
+occ:ManualMode a occ:ModeOfControl ;
+    skos:definition "Device is controlled manually" .
+
+occ:NeutralPreference a occ:ThermalComfortPreference ;
+    skos:definition "A preference for neutral environmental conditions" .
+
+occ:NoControl a occ:DegreeOfControl ;
+    skos:definition "Device is fixed or has no control input capabilities" .
+
+occ:NoPreference a occ:ThermalComfortPreference ;
+    skos:definition "No thermal comfort preference" .
+
+occ:NotAccessible a occ:OccupantAccessibilityLevel ;
+    skos:definition "Device is inaccessible to occupants" .
+
+occ:Occupancy_Count_Sensor a owl:Class,
+        sh:NodeShape ;
+    rdfs:subClassOf brick:Occupancy_Sensor ;
+    skos:definition "Count of number of occupants in a location at a point in time" ;
+    sh:property [ sh:class brick:Location ;
+            sh:path brick:isPointOf ] .
+
+occ:Occupancy_Presence_Sensor a owl:Class,
+        sh:NodeShape ;
+    rdfs:subClassOf brick:Occupancy_Sensor ;
+    skos:definition "Boolean value of whether or not there is someone in the space at a point in time" ;
+    sh:property [ sh:class brick:Location ;
+            sh:path brick:isPointOf ] .
+
+occ:OccupantActivityLevel a owl:Class,
+        sh:NodeShape ;
+    rdfs:subClassOf occ:OccupantAttitudeStream ;
+    skos:definition "A timeseries of an occupant's activity level" .
+
+occ:OccupantClothingChange a owl:Class,
+        sh:NodeShape ;
+    rdfs:subClassOf occ:OccupantActionStream ;
+    skos:definition "A timeseries of when an occupant changes clothing. Data should store the CLO rating of the clothing donned after the change" ;
+    sh:property [ sh:hasValue occ:Clo ;
+            sh:path brick:hasUnit ] .
+
+occ:OccupantDrink a owl:Class,
+        sh:NodeShape ;
+    rdfs:subClassOf occ:OccupantActionStream ;
+    skos:definition "A timeseries of when an occupant takes a drink" .
+
+occ:OccupantMetabolicRate a owl:Class,
+        sh:NodeShape ;
+    rdfs:subClassOf occ:OccupantAttitudeStream ;
+    skos:definition "A timeseries of an occupant's metabolic rate" ;
+    sh:property [ sh:hasValue occ:Met ;
+            sh:in ( occ:Met unit:W-PER-M2 unit:BTU_IT-PER-HR ) ;
+            sh:path brick:hasUnit ] .
+
+occ:OccupantThermalSensation a owl:Class,
+        sh:NodeShape ;
+    rdfs:subClassOf occ:OccupantAttitudeStream ;
+    skos:definition "A timeseries of an occupant's thermal sensation. Defined by ASHRAE Standard 55 seven-point thermal sensation: -3 (cold) to +3 (hot)." .
+
+occ:Occupant_Location_Sensor a owl:Class,
+        sh:NodeShape ;
+    rdfs:subClassOf brick:Occupancy_Sensor ;
+    skos:definition "Location of an occupant at a point in time" ;
+    sh:property [ sh:class brick:Occupant ;
+            sh:path brick:isPointOf ] .
+
+occ:OnOffControl a occ:DegreeOfControl ;
+    skos:definition "Device has on/off binary control" .
+
+occ:PlugMeter a owl:Class,
+        sh:NodeShape ;
+    rdfs:label "Plug Meter" ;
+    rdfs:subClassOf brick:Electrical_Meter ;
+    skos:definition "An electrical meter measuring the consumption of a number of personal devices" ;
+    sh:property [ sh:class brick:Personal_Device ;
+            sh:path brick:isFedBy ] .
+
+occ:PortableFanActionStream a owl:Class,
+        sh:NodeShape ;
+    rdfs:subClassOf occ:OccupantActionStream ;
+    sh:property [ dash:hasValueWithClass occ:Portable_Fan ;
+            rdfs:comment "Action should be associated with a portable fan" ;
+            sh:path brick:isPointOf ] .
+
+occ:PortableHeaterActionStream a owl:Class,
+        sh:NodeShape ;
+    rdfs:subClassOf occ:OccupantActionStream ;
+    sh:property [ dash:hasValueWithClass occ:Portable_Heater ;
+            rdfs:comment "Action should be associated with a portable heater" ;
+            sh:path brick:isPointOf ] .
+
+occ:Shared a occ:OccupantAccessibilityLevel ;
+    skos:definition "Device is accessible by multiple occupants" .
+
+occ:StagedControl a occ:DegreeOfControl ;
+    skos:definition "Device has a fixed number (more than 2) of inputs" .
+
+occ:ThermostatActionStream a owl:Class,
+        sh:NodeShape ;
+    rdfs:subClassOf occ:OccupantActionStream ;
+    sh:property [ dash:hasValueWithClass brick:Thermostat ;
+            rdfs:comment "Action should be associated with a thermostat" ;
+            sh:path brick:isPointOf ] .
+
+occ:WarmerPreference a occ:ThermalComfortPreference ;
+    skos:definition "A preference for environmental conditions that are warmer than neutral" .
+
+occ:WindowActionStream a owl:Class,
+        sh:NodeShape ;
+    rdfs:subClassOf occ:OccupantActionStream ;
+    sh:property [ dash:hasValueWithClass occ:Window ;
+            rdfs:comment "Action should be associated with a window" ;
+            sh:path brick:isPointOf ] .
+
+occ:Wireless_Access_Point a owl:Class ;
+    rdfs:label "WiFi AP" ;
+    rdfs:subClassOf brick:Equipment ;
+    skos:definition "A wireless access point" .
+
+occ:children_age_range a occ:AgeRange ;
+    brick:hasUnit unit:YR ;
+    occ:lowerBound 0 ;
+    occ:upperBound 11 .
+
+occ:climateZone a owl:ObjectProperty ;
+    rdfs:range occ:ASHRAEClimateZone ;
+    skos:definition "The climate zone where the entity was located at the time of data collection" .
+
+occ:clothingDescription a owl:DatatypeProperty ;
+    rdfs:domain occ:Occupant ;
+    rdfs:range xsd:string ;
+    skos:definition "A description of the clothing worn by an occupant; should be used to derive a Clo value or range (see occ:clothingInsulationRange)" .
+
+occ:clothingInsulationRange a owl:ObjectProperty ;
+    rdfs:domain occ:Occupant ;
+    rdfs:range occ:ClothingInsulationRange ;
+    skos:definition "The range or value of insulation of the clothing worn by an occupant, measured in Clo" .
+
+occ:degreeOfControl a brick:EntityProperty ;
+    rdfs:domain brick:Equipment ;
+    rdfs:range occ:DegreeOfControl .
+
+occ:ethnicity a owl:ObjectProperty ;
+    rdfs:domain occ:Individual ;
+    sh:in ( "American Indian or Alaska Native" "Asian or Asian American" "Black or African American" "Hispanic, Latino, Latina, or Latinx" "Middle Eastern or Northern African" "Native Hawaiian or Other Pacific Islander" "White" "An ethnicity not listed here" "Decline to state" ) .
+
+occ:gender a owl:ObjectProperty ;
+    rdfs:domain occ:Occupant ;
+    sh:in ( "Male" "Female" "Transgender" "A gender not listed here" "Decline to state" ) .
+
+occ:groupSize a owl:DatatypeProperty ;
+    rdfs:domain occ:Group ;
+    rdfs:range xsd:positiveInteger ;
+    skos:definition "The number of individuals in a group" .
+
+occ:hasAssignedLocation a owl:ObjectProperty ;
+    rdfs:domain occ:Occupant ;
+    rdfs:subPropertyOf brick:hasLocation ;
+    owl:inverseOf occ:isAssignedLocationOf ;
+    skos:definition "Occupant is assigned to, or otherwise habitually or nominally occupies the indicated Location" .
+
+occ:modeOfControl a brick:EntityProperty ;
+    rdfs:domain brick:Equipment ;
+    rdfs:range occ:ModeOfControl .
+
+occ:occupantAccessibility a brick:EntityProperty ;
+    rdfs:domain brick:Equipment ;
+    rdfs:range occ:OccupantAccessibilityLevel .
+
+occ:operationalStageCount rdfs:domain brick:Equipment ;
+    rdfs:range brick:StageShape ;
+    rdfs:subPropertyOf brick:operationalStageCount ;
+    skos:definition "The number of operational stages supported by this equipment" .
+
+occ:thermalComfortPreference a owl:ObjectProperty ;
+    rdfs:range occ:ThermalComfortPreference .
+
+occ:AddressShape a sh:NodeShape ;
+    sh:property [ skos:definition "The country. For example, USA. You can also provide the two-letter ISO 3166-1 alpha-2 country code." ;
+            sh:datatype xsd:string ;
+            sh:path sdo:addressCountry ],
+        [ skos:definition "The locality in which the street address is, and which is in the region. For example, Mountain View." ;
+            sh:datatype xsd:string ;
+            sh:path sdo:addressLocality ],
+        [ skos:definition "The region in which the locality is, and which is in the country. For example, California or another appropriate first-level Administrative division" ;
+            sh:datatype xsd:string ;
+            sh:path sdo:addressRegion ] ;
+    sh:targetObjectsOf occ:address .
+
+occ:BMI a brick:EntityProperty ;
+    rdfs:domain occ:Occupant ;
+    rdfs:range occ:BMIShape ;
+    skos:definition "The body mass index of an individual, defiend as the body mas divided by the square of the body height" .
+
+occ:BMIShape a sh:NodeShape ;
+    sh:property [ sh:datatype bsh:NumericValue ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path brick:value ],
+        [ sh:hasValue unit:KiloG-PER-M2 ;
+            sh:path brick:hasUnit ] ;
+    sh:targetObjectsOf occ:BMI .
+
+occ:Computer a owl:Class ;
+    rdfs:label "Computer" ;
+    rdfs:subClassOf brick:Equipment ;
+    skos:definition "A general purpose computer" .
+
+occ:Door a owl:Class ;
+    rdfs:label "Door" ;
+    rdfs:subClassOf occ:Envelope_Equipment ;
+    skos:definition "A hinged, sliding, or revolving barrier at the entrance of a building or a zone that allows occupants to go in and out" .
+
+occ:Individual a owl:Class,
+        sh:NodeShape ;
+    rdfs:subClassOf foaf:Person,
+        occ:Occupant ;
+    skos:definition "A single building occupant" ;
+    sh:property [ sh:minCount 1 ;
+            sh:path occ:label ] .
+
+occ:Portable_Fan a owl:Class ;
+    rdfs:label "Portable Fan" ;
+    rdfs:subClassOf occ:Personal_Device ;
+    skos:definition "A cord-connected appliance that is easily moved by hand from place to place to provide flowing air" .
+
+occ:Portable_Heater a owl:Class ;
+    rdfs:label "Portable Heater" ;
+    rdfs:subClassOf occ:Personal_Device ;
+    skos:definition "A cord-connected appliance that is easily moved by hand from place to place to provide heating" .
+
+occ:address a owl:ObjectProperty ;
+    rdfs:range occ:AddressShape .
+
+occ:hasAccessTo a owl:ObjectProperty ;
+    owl:inverseOf occ:isAccessibleBy ;
+    sh:class brick:Equipment .
+
+occ:hasMember a owl:ObjectProperty ;
+    rdfs:domain occ:Group ;
+    rdfs:range occ:Occupant ;
+    owl:inverseOf occ:isMemberOf .
+
+occ:isMemberOf a owl:ObjectProperty ;
+    rdfs:domain occ:Occupant ;
+    rdfs:range occ:Group ;
+    owl:inverseOf occ:hasMember .
+
+owl:DatatypeProperty rdfs:subClassOf rdf:Property .
+
+occ: a owl:Ontology ;
+    rdfs:label "Brick Occupancy Ontology" ;
+    dcterms1:creator ( [ a sdo:Person ;
+                sdo:email "gtfierro@cs.berkeley.edu" ;
+                sdo:name "Gabe Fierro" ] ) ;
+    dcterms1:license <https://github.com/BrickSchema/brick/blob/master/LICENSE> ;
+    rdfs:seeAlso <https://brickschema.org> .
+
+occ:Ceiling_Fan a owl:Class ;
+    rdfs:label "Ceiling Fan" ;
+    rdfs:subClassOf brick:Fan ;
+    skos:definition "A mechanical fan mounted on the ceiling of a room or space, usually electrically powered, that hasAccessTo hub-mounted rotating blades to circulate air" .
+
+occ:Envelope_Equipment a owl:Class ;
+    rdfs:label "Envelope Equipment" ;
+    rdfs:subClassOf brick:Equipment ;
+    skos:definition "Equipment used in the building envelope" .
+
+occ:Met a qudt:Unit ;
+    rdfs:label "Met"@en ;
+    dcterms1:description "Metabolic rate, typically of human body heat or power production. 1 Met is the nominal metablic rate of a relaxed seated person." ;
+    qudt:dbpediaMatch "https://dbpedia.org/page/Metabolic_equivalent_of_task" ;
+    qudt:symbol "Met" ;
+    rdfs:isDefinedBy <http://qudt.org/2.1/vocab/unit> .
+
+occ:Window a owl:Class ;
+    rdfs:label "Window" ;
+    rdfs:subClassOf occ:Envelope_Equipment ;
+    skos:definition "An opening in the wall of a building to admit light or air and allows occupants to see out" .
+
+occ:age a brick:EntityProperty ;
+    rdfs:domain occ:Occupant ;
+    skos:definition "The age or age range of the occupant" .
+
+occ:isAssignedLocationOf a owl:ObjectProperty ;
+    rdfs:domain brick:Location ;
+    rdfs:subPropertyOf brick:isLocationOf ;
+    owl:inverseOf occ:isAssignedLocationOf ;
+    skos:definition "Location is assigned to, or otherwise habitually or nominally occupied by the indicated Occupant" .
+
+occ:label rdfs:domain xsd:string ;
+    rdfs:subPropertyOf rdfs:label ;
+    skos:definition "The name or identifier or other label for this entity" .
+
+occ:Group a owl:Class,
+        sh:NodeShape ;
+    rdfs:subClassOf foaf:Group,
+        occ:Occupant ;
+    skos:definition "One or more building occupants or groups" ;
+    sh:property [ sh:minCount 1 ;
+            sh:path occ:label ] .
+
+occ:OccupantAttitudeStream a owl:Class,
+        sh:NodeShape ;
+    rdfs:subClassOf brick:Point ;
+    skos:definition "A data source of occupant attitudes" ;
+    sh:property [ dash:hasValueWithClass occ:Occupant ;
+            rdfs:comment "Attitudes can be associated with occupants" ;
+            sh:path brick:isPointOf ],
+        [ sh:datatype xsd:boolean ;
+            sh:minCount 1 ;
+            sh:path occ:surveyed ] .
+
+occ:Personal_Device a owl:Class ;
+    rdfs:label "Personal Device" ;
+    rdfs:subClassOf brick:Equipment ;
+    skos:definition "Dedicated devices used to maintain thermal comfort for occupants" .
+
+occ:isAccessibleBy a owl:ObjectProperty ;
+    owl:inverseOf occ:hasAccessTo ;
+    sh:class occ:Occupant .
+
+occ:ModeOfControl a owl:Class ;
+    rdfs:label "ModeOfControl" ;
+    skos:definition "The policy under which the device is controlled" .
+
+occ:OccupantAccessibilityLevel a owl:Class ;
+    skos:definition "How accessible a device is to occupants" .
+
+occ:AgeRange a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:float ;
+            sh:path occ:lowerBound ],
+        [ sh:datatype xsd:float ;
+            sh:path occ:upperBound ],
+        [ sh:in ( unit:YR unit:MO unit:DAY unit:HR unit:MIN ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path brick:hasUnit ] ;
+    sh:targetObjectsOf occ:age .
+
+occ:ClothingInsulationRange a sh:NodeShape ;
+    skos:definition "The range or value of the clothing insulation worn by an occupant" ;
+    sh:property [ sh:hasValue occ:Clo ;
+            sh:path brick:hasUnit ],
+        [ sh:datatype xsd:float ;
+            sh:path occ:lowerBound ],
+        [ sh:datatype xsd:float ;
+            sh:path occ:upperBound ] ;
+    sh:targetObjectsOf occ:clothingInsulation .
+
+occ:DegreeOfControl a owl:Class ;
+    rdfs:label "DegreeOfControl" ;
+    skos:definition "The policy under which the device is controlled" .
+
+occ:ThermalComfortPreference a owl:Class ;
+    skos:definition "The occupant's thermal comfort preference with respect to the neutral environmental conditions defined by the ASHRAE Standard 55 comfort envelope." .
+
+occ:Clo a qudt:Unit ;
+    rdfs:label "clo"@en ;
+    dcterms1:description "A clo (clothing insulation) is a measure of the thermal insulation provided by clothing. 1 clo is defined as the amount of insulation that allows a person at rest to maintain thermal equilibrium in an environment at 21 degrees Celsius in a normally ventilated room (0.1 m/s air movement)."^^qudt:LatexString ;
+    qudt:dbpediaMatch "https://dbpedia.org/page/Thermal_insulation"^^xsd:anyURI ;
+    qudt:hasDimensionVector qkdv:A0E0L0I0M0H0T0D1 ;
+    qudt:hasQuantityKind quantitykind:Dimensionless ;
+    qudt:informativeReference "https://en.wikipedia.org/wiki/Clothing_insulation"^^xsd:anyURI ;
+    qudt:symbol "clo" ;
+    rdfs:isDefinedBy <http://qudt.org/2.1/vocab/unit> .
+
+occ:ASHRAEClimateZone a owl:Class ;
+    skos:definition "A type of climate defined in the ASHRAE 169-2006 standard." .
+
+occ:OccupantActionStream a owl:Class,
+        sh:NodeShape ;
+    rdfs:subClassOf brick:Point ;
+    skos:definition "A data source of occupant actions; an instance is related to an occupant and usually also an equipment. The timeseries contains the actions. This ontology does not take any position on the encoding of those actions." ;
+    sh:property [ dash:hasValueWithClass occ:Occupant ;
+            rdfs:comment "Actions can be associated with occupants" ;
+            sh:path brick:isPointOf ],
+        [ sh:datatype xsd:boolean ;
+            sh:minCount 1 ;
+            sh:path occ:surveyed ] .
+
+occ:Occupant a owl:Class ;
+    rdfs:label "Occupant" ;
+    rdfs:subClassOf foaf:Agent,
+        brick:Entity ;
+    skos:definition "Building occupant, which can be an individual occupant or a group of occupants sharing some common attributes" .
+
+owl:Class rdfs:subClassOf rdfs:Class .
+

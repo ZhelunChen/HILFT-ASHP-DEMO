@@ -41,9 +41,9 @@ smallOff:oa_temp a brick:Outside_Air_Temperature_Sensor ;
 	brick:hasUnit unit:DEG_F .
 smallOff:oa_temp_dp a brick:Outside_Air_Dewpoint_Sensor ;
 	brick:hasUnit unit:DEG_F .
-smallOff:oa_temp_sim a brick:Outside_Air_Temperature_Sensor ;
+smallOff:oa_temp_sim a brick:Temperature_Setpoint ;
 	brick:hasUnit unit:DEG_F .
-smallOff:oa_temp_dp_sim a brick:Outside_Air_Dewpoint_Sensor ;
+smallOff:oa_temp_dp_sim a brick:Temperature_Setpoint ;
 	brick:hasUnit unit:DEG_F .	
 smallOff:sa_temp a brick:Supply_Air_Temperature_Sensor ;
 	brick:hasUnit unit:DEG_F .
@@ -78,9 +78,9 @@ smallOff:zn_temp_dp a brick:Zone_Air_Dewpoint_Sensor ;
 	brick:hasUnit unit:DEG_F .
 smallOff:local_pres a brick:Pressure_Sensor ;
 	brick:hasUnit unit:IN_H2O .
-smallOff:zn_temp_sim a brick:Zone_Air_Temperature_Sensor ;
+smallOff:zn_temp_sim a brick:Temperature_Setpoint ;
 	brick:hasUnit unit:DEG_F .
-smallOff:zn_temp_dp_sim a brick:Zone_Air_Dewpoint_Sensor ;
+smallOff:zn_temp_dp_sim a brick:Temperature_Setpoint ;
 	brick:hasUnit unit:DEG_F .
 
 # THERMOSTAT

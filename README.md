@@ -42,12 +42,12 @@ This document provides comprehensive details of the datasets generated from the 
 
 ## Data Description
 For each scenario, there are two files: 
-- `data.csv`: Official dataset. Refer to [metadata](assets/metadata.csv) for data point definitions.
+- `data.csv`: Official dataset. Refer to [Metadata](assets/Metadata.csv) for data point definitions.
 - `raw.mat`: Raw HIL simulation data.
 
-See [assets/ashp_brick.ttl](assets/ashp_brick.ttl) and [assets/ashp_brick_denocc.ttl](assets/ashp_brick_denocc.ttl) for the Brick models that represent the data points and their relationships. Specifically, the `_denocc` version is associated with the data tested under the dense occupancy `DenOcc` scenario. The following figure shows the data point relationships created under the Brick models.
+See [assets/HIL_ASHP_Brick_v1-3-0.ttl](assets/HIL_ASHP_Brick_v1-3-0.ttl) and [assets/HIL_ASHP_Brick_v1-3-0_DenseOcc.ttl](assets/HIL_ASHP_Brick_v1-3-0_DenseOcc.ttl) for the Brick models that represent the data points and their relationships. Specifically, the `_DenseOcc` version is associated with the data tested under the dense occupancy `DenOcc` scenario. These models were validated against [Brick v1.3.0](assets/Brick_v1-3-0.ttl) and its [occupancy extension](assets/brick_occ_ext.ttl). The following figure shows the data point relationships created under the Brick models.
 
-![The Schematic Diagram of the ASHP Brick Model](assets/ashp_brick_diagram.jpg)
+![The Schematic Diagram of the ASHP Brick Model](assets/ASHP_Brick_Diagram.jpg)
 
 ## Methodology
 The datasets in this repository were generated using an Air Source Heat Pump Hardware-In-the-Loop Flexible load Testbed (i.e., ASHP HILFT). The figure below depicts the overall framework of a HILFT, which includes three parts: a virtual building model, a Grid-interactive Efficient Building (GEB) control model, and a hardware testbed. The virtual building model further includes a zone load model, an occupant comfort & behavior model, and an airflow model. More details about the development and integration of the HILFT can be found in [^1].
@@ -67,7 +67,7 @@ The occupant behavior model was adapted from Langevin et al. [^2]. Indoor airflo
 ### System Configuration
 The system is a two-stage ASHP. The figure below depicts the system configuration. THe ASHP HILFT utilizes the NIST ASHP testing facility, which is equipped with two environmental chambers that emulate indoor and outdoor air conditions. Water-cooled, electrically heated AHUs are included in both chambers to create the outdoor weather conditions and the zone load. 
 
-![Air Source Heat Pump](assets/ashp_diagram.jpg)
+![Air Source Heat Pump](assets/ASHP_Diagram.jpg)
 
 ### Local Control Sequence
 The heat pump system is controlled based on the zone return air temperature. When return air temperature is 0.28 °C (0.5 °F) higher than the cooling setpoint, the heat pump operates in low-speed mode until the temperature drops below the cooling setpoint. When return air temperature is 0.56 °C (1 °F) above the cooling setpoint, the heat pump operates in high-speed mode until the temperature drops below 0.28 °C (0.5 °F) above the cooling setpoint and then switches back to low-speed mode.
@@ -142,7 +142,7 @@ Same as **Default** except:
 
 ### TES
 Same as **Default** except:
-- Building type: On top of the ASHRAE 90.1-2004 envelope, additional internal surface layers with phase change material were added to the ceiling and walls.
+- Building type: On top of the ASHRAE 90.1-2004 budling envelope, additional internal surface layers with phase change material were added to the ceiling and walls.
 
 ### MPC&TES
 A combination of **MPC** and **TES**
@@ -163,7 +163,7 @@ Please cite the datasets as below:
 *TBD*
 
 ## References
-[^1]: Chen, Zhelun, et al. "Development of a Hardware-in-the-loop Testbed for Laboratory Performance Verification of Flexible Building Equipment in Typical Commercial Buildings." arXiv preprint arXiv:2301.13412 (2023). [[Paper](https://arxiv.org/abs/2301.13412)]
+[^1]: Chen, Zhelun, et al. "Development of a Hardware-in-the-loop Testbed for Laboratory Performance Verification of Flexible Building Equipment in Typical Commercial Buildings." ASHRAE Transactions 128 (2022). [[Paper](https://arxiv.org/abs/2301.13412)]
 
 [^2]: Langevin, J., et al. "Simulating the human-building interaction: Development and validation of an agent-based model of office occupant behaviors." Building and Environment 88 (2015): 27-45. 
 
