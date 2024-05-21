@@ -5,975 +5,975 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix tag: <https://brickschema.org/schema/BrickTag#> .
 @prefix unit: <http://qudt.org/vocab/unit/> .
-@prefix smallOff: <https://NIST.gov/example#/> .
+@prefix ASHP: <https://NIST.gov/example#/> .
 
 # GRID SIGNALS
-smallOff:grid_signal_type a brick:Status ;
+ASHP:grid_signal_type a brick:Status ;
 	brick:hasUnit unit:UNITLESS ;
 	rdfs:comment "Grid signal type (0 no signal, 1 shedding request, 2 time-of-use price, 3 mod)" .
-smallOff:grid_signal_shed a brick:Load_Shed_Status ;
+ASHP:grid_signal_shed a brick:Load_Shed_Status ;
 	brick:hasUnit unit:UNITLESS ;
 	rdfs:comment "Grid signal shedding request (0 - no request, 1 - request)" .
-smallOff:grid_signal_price a brick:Status ; 
+ASHP:grid_signal_price a brick:Status ; 
 	rdf:label "unit: USD-PER-KiloW-HR" .
 
 # OUTDOOR EMULATOR
-smallOff:out_emulator a brick:HVAC_Equipment ;
-	brick:hasPoint smallOff:oa_temp_sim,
-		smallOff:oa_temp_dp_sim .
+ASHP:out_emulator a brick:HVAC_Equipment ;
+	brick:hasPoint ASHP:oa_temp_sim,
+		ASHP:oa_temp_dp_sim .
 
-smallOff:oa_temp_sim a brick:Temperature_Setpoint ;
+ASHP:oa_temp_sim a brick:Temperature_Setpoint ;
 	brick:hasUnit unit:DEG_F .
-smallOff:oa_temp_dp_sim a brick:Dewpoint_Setpoint ;
+ASHP:oa_temp_dp_sim a brick:Dewpoint_Setpoint ;
 	brick:hasUnit unit:DEG_F .
 
 # ZONE EMULATOR
-smallOff:zn_emulator a brick:HVAC_Equipment ;
-	brick:hasPoint smallOff:zn_temp_sim,
-		smallOff:zn_temp_dp_sim .
+ASHP:zn_emulator a brick:HVAC_Equipment ;
+	brick:hasPoint ASHP:zn_temp_sim,
+		ASHP:zn_temp_dp_sim .
 
-smallOff:zn_temp_sim a brick:Temperature_Setpoint ;
+ASHP:zn_temp_sim a brick:Temperature_Setpoint ;
 	brick:hasUnit unit:DEG_F .
-smallOff:zn_temp_dp_sim a brick:Dewpoint_Setpoint ;
+ASHP:zn_temp_dp_sim a brick:Dewpoint_Setpoint ;
 	brick:hasUnit unit:DEG_F .
 
 # HVAC SYSTEM
-smallOff:ASHP a brick:HVAC_Equipment ;
-	brick:isFedBy smallOff:zn_emu ;
-	brick:hasPoint smallOff:sa_temp,
-		smallOff:sa_temp_dp,
-		smallOff:sa_flow,
-		smallOff:ref_flow,
-		smallOff:stat,
-		smallOff:stg,
-		smallOff:id_power,
-		smallOff:od_power .
+ASHP:heat_pump a brick:HVAC_Equipment ;
+	brick:isFedBy ASHP:zn_emu ;
+	brick:hasPoint ASHP:sa_temp,
+		ASHP:sa_temp_dp,
+		ASHP:sa_flow,
+		ASHP:ref_flow,
+		ASHP:stat,
+		ASHP:stg,
+		ASHP:id_power,
+		ASHP:od_power .
 
-smallOff:sa_temp a brick:Supply_Air_Temperature_Sensor ;
+ASHP:sa_temp a brick:Supply_Air_Temperature_Sensor ;
 	brick:hasUnit unit:DEG_F .
-smallOff:sa_temp_dp a brick:Dewpoint_Sensor ;
+ASHP:sa_temp_dp a brick:Dewpoint_Sensor ;
 	brick:hasUnit unit:DEG_F .
-smallOff:sa_flow a brick:Supply_Air_Flow_Sensor ;
+ASHP:sa_flow a brick:Supply_Air_Flow_Sensor ;
 	brick:hasUnit unit:FT3-PER-MIN ;
 	rdf:label "at Standard Air Density (0.075 lbm/ft3)" .
-smallOff:ref_flow a brick:Flow_Sensor ;
+ASHP:ref_flow a brick:Flow_Sensor ;
 	rdf:label "unit:LB-PER-MIN" .
-smallOff:stat a brick:On_Off_Status ;
+ASHP:stat a brick:On_Off_Status ;
 	brick:hasUnit unit:UNITLESS .
-smallOff:stg a brick:Stages_Status ;
+ASHP:stg a brick:Stages_Status ;
 	brick:hasUnit unit:UNITLESS .
-smallOff:id_power a brick:Power_Sensor ;
+ASHP:id_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
-smallOff:od_power a brick:Power_Sensor ;
+ASHP:od_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
 # EMULATED OUTDOOR
-smallOff:out_emu a brick:Location ;
-	brick:isFedBy smallOff:out_emulator ;
-	brick:hasPoint smallOff:oa_temp,
-		smallOff:oa_temp_dp .
+ASHP:out_emu a brick:Location ;
+	brick:isFedBy ASHP:out_emulator ;
+	brick:hasPoint ASHP:oa_temp,
+		ASHP:oa_temp_dp .
 
-smallOff:oa_temp a brick:Outside_Air_Temperature_Sensor ;
+ASHP:oa_temp a brick:Outside_Air_Temperature_Sensor ;
 	brick:hasUnit unit:DEG_F .
-smallOff:oa_temp_dp a brick:Outside_Air_Dewpoint_Sensor ;
+ASHP:oa_temp_dp a brick:Outside_Air_Dewpoint_Sensor ;
 	brick:hasUnit unit:DEG_F .	
 
 # EMULATED ZONE
-smallOff:zn_emu a brick:Location ;
-	brick:isFedBy smallOff:zn_emulator,
-		smallOff:ASHP ;
-	brick:hasPoint smallOff:zn_temp,
-		smallOff:zn_temp_dp,
-		smallOff:local_pres .
+ASHP:zn_emu a brick:Location ;
+	brick:isFedBy ASHP:zn_emulator,
+		ASHP:heat_pump ;
+	brick:hasPoint ASHP:zn_temp,
+		ASHP:zn_temp_dp,
+		ASHP:local_pres .
 
-smallOff:zn_temp a brick:Zone_Air_Temperature_Sensor ;
+ASHP:zn_temp a brick:Zone_Air_Temperature_Sensor ;
 	brick:hasUnit unit:DEG_F .
-smallOff:zn_temp_dp a brick:Zone_Air_Dewpoint_Sensor ;
+ASHP:zn_temp_dp a brick:Zone_Air_Dewpoint_Sensor ;
 	brick:hasUnit unit:DEG_F .
-smallOff:local_pres a brick:Pressure_Sensor ;
+ASHP:local_pres a brick:Pressure_Sensor ;
 	brick:hasUnit unit:IN_H2O .
 
 # SIMULATED ZONE
-smallOff:zn_sim a brick:HVAC_Zone ;
-    brick:isFedBy smallOff:ASHP ;
-	brick:hasPoint smallOff:zn_temp_sim,
-		smallOff:zn_temp_dp_sim .
+ASHP:zn_sim a brick:HVAC_Zone ;
+    brick:isFedBy ASHP:heat_pump ;
+	brick:hasPoint ASHP:zn_temp_sim,
+		ASHP:zn_temp_dp_sim .
 
 # THERMOSTAT
-smallOff:tstat a brick:Thermostat ;
-	brick:isPartOf smallOff:ASHP ;
-	brick:hasLocation smallOff:zn_sim ;
+ASHP:tstat a brick:Thermostat ;
+	brick:isPartOf ASHP:heat_pump ;
+	brick:hasLocation ASHP:zn_sim ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
 	occ:degreeOfControl [  brick:value occ:StagedControl ] ;
-	occ:isAccessibleBy smallOff:occ01,
-		smallOff:occ02,
-		smallOff:occ03,
-		smallOff:occ04,
-		smallOff:occ05,
-		smallOff:occ06,
-		smallOff:occ07 ;
-	brick:hasPoint smallOff:zn_temp_cspt, 
-		smallOff:zn_temp_hspt.
+	occ:isAccessibleBy ASHP:occ01,
+		ASHP:occ02,
+		ASHP:occ03,
+		ASHP:occ04,
+		ASHP:occ05,
+		ASHP:occ06,
+		ASHP:occ07 ;
+	brick:hasPoint ASHP:zn_temp_cspt, 
+		ASHP:zn_temp_hspt.
 
-smallOff:zn_temp_cspt a brick:Zone_Air_Cooling_Temperature_Setpoint ;
+ASHP:zn_temp_cspt a brick:Zone_Air_Cooling_Temperature_Setpoint ;
 	brick:hasUnit unit:DEG_F .
-smallOff:zn_temp_hspt a brick:Zone_Air_Heating_Temperature_Setpoint ;
+ASHP:zn_temp_hspt a brick:Zone_Air_Heating_Temperature_Setpoint ;
 	brick:hasUnit unit:DEG_F .
 
 # OCCUPANT01
 # LOCATION INSIDE ZONE
-smallOff:occ01_loc a brick:Location ;
-	brick:isLocationof smallOff:occ01_pres,
-		smallOff:occ01_pheater,
-		smallOff:occ01_pfan ;
-	occ:isAssignedLocationOf smallOff:occ01 ;
+ASHP:occ01_loc a brick:Location ;
+	brick:isLocationof ASHP:occ01_pres,
+		ASHP:occ01_pheater,
+		ASHP:occ01_pfan ;
+	occ:isAssignedLocationOf ASHP:occ01 ;
 	rdf:label "6.9225, 3.425" .
 
 # OCCUPANCY SENSOR
-smallOff:occ01_pres a occ:Occupancy_Presence_Sensor ;
+ASHP:occ01_pres a occ:Occupancy_Presence_Sensor ;
 	brick:hasUnit unit:UNITLESS .
 
 # PORTABLE EQUIPMENT
-smallOff:occ01_pheater a occ:Portable_Heater ;
-	occ:isAccessibleBy smallOff:occ01 ;
+ASHP:occ01_pheater a occ:Portable_Heater ;
+	occ:isAccessibleBy ASHP:occ01 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
-	brick:hasPoint smallOff:occ01_ph_power .
+	brick:hasPoint ASHP:occ01_ph_power .
 
-smallOff:occ01_ph_power a brick:Power_Sensor ;
+ASHP:occ01_ph_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
-smallOff:occ01_pfan a occ:Portable_Fan ;
-	occ:isAccessibleBy smallOff:occ01 ;
+ASHP:occ01_pfan a occ:Portable_Fan ;
+	occ:isAccessibleBy ASHP:occ01 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
-	brick:hasPoint smallOff:occ01_pf_power .
+	brick:hasPoint ASHP:occ01_pf_power .
 
-smallOff:occ01_pf_power a brick:Power_Sensor ;
+ASHP:occ01_pf_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
 # OCCUPANT
-smallOff:occ01 a occ:Occupant ;
+ASHP:occ01 a occ:Occupant ;
 	occ:Gender "Male" ;
 	occ:thermalComfortPreference "[-3,0]" ;
-	brick:hasPoint smallOff:occ01_spt,
-		smallOff:occ01_ph,
-		smallOff:occ01_pf,
-		smallOff:occ01_drink,
-		smallOff:occ01_clo,
-		smallOff:occ01_act,
-		smallOff:occ01_sensation,
-		smallOff:occ01_comfort,
-		smallOff:occ01_met .
+	brick:hasPoint ASHP:occ01_spt,
+		ASHP:occ01_ph,
+		ASHP:occ01_pf,
+		ASHP:occ01_drink,
+		ASHP:occ01_clo,
+		ASHP:occ01_act,
+		ASHP:occ01_sensation,
+		ASHP:occ01_comfort,
+		ASHP:occ01_met .
 
-smallOff:occ01_spt a occ:ThermostatActionStream ;
+ASHP:occ01_spt a occ:ThermostatActionStream ;
 	brick:hasUnit unit:DEG_F ;
 	occ:surveyed false .
-smallOff:occ01_ph a occ:PortableHeaterActionStream ;
+ASHP:occ01_ph a occ:PortableHeaterActionStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false .
-smallOff:occ01_pf a occ:PortableFanActionStream ;
+ASHP:occ01_pf a occ:PortableFanActionStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false .
-smallOff:occ01_drink a occ:OccupantDrink ;
+ASHP:occ01_drink a occ:OccupantDrink ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "-1 cold drink, 0 no drink, 1 hot drink" .
-smallOff:occ01_clo a occ:OccupantClothingChange ;
+ASHP:occ01_clo a occ:OccupantClothingChange ;
 	brick:hasUnit occ:Clo ;
 	occ:surveyed false .
-smallOff:occ01_act a occ:OccupantActivityLevel ;
+ASHP:occ01_act a occ:OccupantActivityLevel ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "0 sitting, 1 walking" .
-smallOff:occ01_sensation a occ:OccupantThermalSensation ;
+ASHP:occ01_sensation a occ:OccupantThermalSensation ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "PMV value, [-3,3]" .
-smallOff:occ01_comfort a occ:OccupantAttitudeStream ;
+ASHP:occ01_comfort a occ:OccupantAttitudeStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "-1 cold, 0 neutral, 1 warm" .
-smallOff:occ01_met a occ:OccupantMetabolicRate ;
+ASHP:occ01_met a occ:OccupantMetabolicRate ;
 	brick:hasUnit occ:Met ;
 	occ:surveyed false .
 
 # OCCUPANT02
 # LOCATION INSIDE ZONE
-smallOff:occ02_loc a brick:Location ;
-	brick:isLocationof smallOff:occ02_pres,
-		smallOff:occ02,
-		smallOff:occ02_pfan ;
-	occ:isAssignedLocationOf smallOff:occ02 ;
+ASHP:occ02_loc a brick:Location ;
+	brick:isLocationof ASHP:occ02_pres,
+		ASHP:occ02,
+		ASHP:occ02_pfan ;
+	occ:isAssignedLocationOf ASHP:occ02 ;
 	rdf:label "11.5375, 3.425" .
 
 # OCCUPANCY SENSOR
-smallOff:occ02_pres a occ:Occupancy_Presence_Sensor ;
+ASHP:occ02_pres a occ:Occupancy_Presence_Sensor ;
 	brick:hasUnit unit:UNITLESS .
 
 # PORTABLE EQUIPMENT
-smallOff:occ02_pheater a occ:Portable_Heater ;
-	occ:isAccessibleBy smallOff:occ02 ;
+ASHP:occ02_pheater a occ:Portable_Heater ;
+	occ:isAccessibleBy ASHP:occ02 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
-	brick:hasPoint smallOff:occ02_ph_power .
+	brick:hasPoint ASHP:occ02_ph_power .
 
-smallOff:occ02_ph_power a brick:Power_Sensor ;
+ASHP:occ02_ph_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
-smallOff:occ02_pfan a occ:Portable_Fan ;
-	occ:isAccessibleBy smallOff:occ02 ;
+ASHP:occ02_pfan a occ:Portable_Fan ;
+	occ:isAccessibleBy ASHP:occ02 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
-	brick:hasPoint smallOff:occ02_pf_power .
+	brick:hasPoint ASHP:occ02_pf_power .
 
-smallOff:occ02_pf_power a brick:Power_Sensor ;
+ASHP:occ02_pf_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
 # OCCUPANT
-smallOff:occ02 a occ:Occupant ;
+ASHP:occ02 a occ:Occupant ;
 	occ:Gender "Male" ;
 	occ:thermalComfortPreference "[-2,1]" ;
-	brick:hasPoint smallOff:occ02_spt,
-		smallOff:occ02_ph,
-		smallOff:occ02_pf,
-		smallOff:occ02_drink,
-		smallOff:occ02_clo,
-		smallOff:occ02_act,
-		smallOff:occ02_sensation,
-		smallOff:occ02_comfort,
-		smallOff:occ02_met .
+	brick:hasPoint ASHP:occ02_spt,
+		ASHP:occ02_ph,
+		ASHP:occ02_pf,
+		ASHP:occ02_drink,
+		ASHP:occ02_clo,
+		ASHP:occ02_act,
+		ASHP:occ02_sensation,
+		ASHP:occ02_comfort,
+		ASHP:occ02_met .
 
-smallOff:occ02_spt a occ:ThermostatActionStream ;
+ASHP:occ02_spt a occ:ThermostatActionStream ;
 	brick:hasUnit unit:DEG_F ;
 	occ:surveyed false .
-smallOff:occ02_ph a occ:PortableHeaterActionStream ;
+ASHP:occ02_ph a occ:PortableHeaterActionStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false .
-smallOff:occ02_pf a occ:PortableFanActionStream ;
+ASHP:occ02_pf a occ:PortableFanActionStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false .
-smallOff:occ02_drink a occ:OccupantDrink ;
+ASHP:occ02_drink a occ:OccupantDrink ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "-1 cold drink, 0 no drink, 1 hot drink" .
-smallOff:occ02_clo a occ:OccupantClothingChange ;
+ASHP:occ02_clo a occ:OccupantClothingChange ;
 	brick:hasUnit occ:Clo ;
 	occ:surveyed false .
-smallOff:occ02_act a occ:OccupantActivityLevel ;
+ASHP:occ02_act a occ:OccupantActivityLevel ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "0 sitting, 1 walking" .
-smallOff:occ02_sensation a occ:OccupantThermalSensation ;
+ASHP:occ02_sensation a occ:OccupantThermalSensation ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "PMV value, [-3,3]" .
-smallOff:occ02_comfort a occ:OccupantAttitudeStream ;
+ASHP:occ02_comfort a occ:OccupantAttitudeStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "-1 cold, 0 neutral, 1 warm" .
-smallOff:occ02_met a occ:OccupantMetabolicRate ;
+ASHP:occ02_met a occ:OccupantMetabolicRate ;
 	brick:hasUnit occ:Met ;
 	occ:surveyed false .
 
 # OCCUPANT03
 # LOCATION INSIDE ZONE
-smallOff:occ03_loc a brick:Location ;
-	brick:isLocationof smallOff:occ03_pres,
-		smallOff:occ03_pheater,
-		smallOff:occ03_pfan ;
-	occ:isAssignedLocationOf smallOff:occ03 ;
+ASHP:occ03_loc a brick:Location ;
+	brick:isLocationof ASHP:occ03_pres,
+		ASHP:occ03_pheater,
+		ASHP:occ03_pfan ;
+	occ:isAssignedLocationOf ASHP:occ03 ;
 	rdf:label "20.7675, 3.425" .
 
 # OCCUPANCY SENSOR
-smallOff:occ03_pres a occ:Occupancy_Presence_Sensor ;
+ASHP:occ03_pres a occ:Occupancy_Presence_Sensor ;
 	brick:hasUnit unit:UNITLESS .
 
 # PORTABLE EQUIPMENT
-smallOff:occ03_pheater a occ:Portable_Heater ;
-	occ:isAccessibleBy smallOff:occ03 ;
+ASHP:occ03_pheater a occ:Portable_Heater ;
+	occ:isAccessibleBy ASHP:occ03 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
-	brick:hasPoint smallOff:occ03_ph_power .
+	brick:hasPoint ASHP:occ03_ph_power .
 
-smallOff:occ03_ph_power a brick:Power_Sensor ;
+ASHP:occ03_ph_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
-smallOff:occ03_pfan a occ:Portable_Fan ;
-	occ:isAccessibleBy smallOff:occ03 ;
+ASHP:occ03_pfan a occ:Portable_Fan ;
+	occ:isAccessibleBy ASHP:occ03 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
-	brick:hasPoint smallOff:occ03_pf_power .
+	brick:hasPoint ASHP:occ03_pf_power .
 
-smallOff:occ03_pf_power a brick:Power_Sensor ;
+ASHP:occ03_pf_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
 # OCCUPANT
-smallOff:occ03 a occ:Occupant ;
+ASHP:occ03 a occ:Occupant ;
 	occ:Gender "Male" ;
 	occ:thermalComfortPreference "[-3,2]" ;
-	brick:hasPoint smallOff:occ03_spt,
-		smallOff:occ03_ph,
-		smallOff:occ03_pf,
-		smallOff:occ03_drink,
-		smallOff:occ03_clo,
-		smallOff:occ03_act,
-		smallOff:occ03_sensation,
-		smallOff:occ03_comfort,
-		smallOff:occ03_met .
+	brick:hasPoint ASHP:occ03_spt,
+		ASHP:occ03_ph,
+		ASHP:occ03_pf,
+		ASHP:occ03_drink,
+		ASHP:occ03_clo,
+		ASHP:occ03_act,
+		ASHP:occ03_sensation,
+		ASHP:occ03_comfort,
+		ASHP:occ03_met .
 
-smallOff:occ03_spt a occ:ThermostatActionStream ;
+ASHP:occ03_spt a occ:ThermostatActionStream ;
 	brick:hasUnit unit:DEG_F ;
 	occ:surveyed false .
-smallOff:occ03_ph a occ:PortableHeaterActionStream ;
+ASHP:occ03_ph a occ:PortableHeaterActionStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false .
-smallOff:occ03_pf a occ:PortableFanActionStream ;
+ASHP:occ03_pf a occ:PortableFanActionStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false .
-smallOff:occ03_drink a occ:OccupantDrink ;
+ASHP:occ03_drink a occ:OccupantDrink ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "-1 cold drink, 0 no drink, 1 hot drink" .
-smallOff:occ03_clo a occ:OccupantClothingChange ;
+ASHP:occ03_clo a occ:OccupantClothingChange ;
 	brick:hasUnit occ:Clo ;
 	occ:surveyed false .
-smallOff:occ03_act a occ:OccupantActivityLevel ;
+ASHP:occ03_act a occ:OccupantActivityLevel ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "0 sitting, 1 walking" .
-smallOff:occ03_sensation a occ:OccupantThermalSensation ;
+ASHP:occ03_sensation a occ:OccupantThermalSensation ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "PMV value, [-3,3]" .
-smallOff:occ03_comfort a occ:OccupantAttitudeStream ;
+ASHP:occ03_comfort a occ:OccupantAttitudeStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "-1 cold, 0 neutral, 1 warm" .
-smallOff:occ03_met a occ:OccupantMetabolicRate ;
+ASHP:occ03_met a occ:OccupantMetabolicRate ;
 	brick:hasUnit occ:Met ;
 	occ:surveyed false .
 
 # OCCUPANT04
 # LOCATION INSIDE ZONE
-smallOff:occ04_loc a brick:Location ;
-	brick:isLocationof smallOff:occ04_pres,
-		smallOff:occ04_pheater,
-		smallOff:occ04_pfan ;
-	occ:isAssignedLocationOf smallOff:occ04 ;
+ASHP:occ04_loc a brick:Location ;
+	brick:isLocationof ASHP:occ04_pres,
+		ASHP:occ04_pheater,
+		ASHP:occ04_pfan ;
+	occ:isAssignedLocationOf ASHP:occ04 ;
 	rdf:label "4.615, 1.575" .
 
 # OCCUPANCY SENSOR
-smallOff:occ04_pres a occ:Occupancy_Presence_Sensor ;
+ASHP:occ04_pres a occ:Occupancy_Presence_Sensor ;
 	brick:hasUnit unit:UNITLESS .
 
 # PORTABLE EQUIPMENT
-smallOff:occ04_pheater a occ:Portable_Heater ;
-	occ:isAccessibleBy smallOff:occ04 ;
+ASHP:occ04_pheater a occ:Portable_Heater ;
+	occ:isAccessibleBy ASHP:occ04 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
-	brick:hasPoint smallOff:occ04_ph_power .
+	brick:hasPoint ASHP:occ04_ph_power .
 
-smallOff:occ04_ph_power a brick:Power_Sensor ;
+ASHP:occ04_ph_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
-smallOff:occ04_pfan a occ:Portable_Fan ;
-	occ:isAccessibleBy smallOff:occ04 ;
+ASHP:occ04_pfan a occ:Portable_Fan ;
+	occ:isAccessibleBy ASHP:occ04 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
-	brick:hasPoint smallOff:occ04_pf_power .
+	brick:hasPoint ASHP:occ04_pf_power .
 
-smallOff:occ04_pf_power a brick:Power_Sensor ;
+ASHP:occ04_pf_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
 # OCCUPANT
-smallOff:occ04 a occ:Occupant ;
+ASHP:occ04 a occ:Occupant ;
 	occ:Gender "Male" ;
 	occ:thermalComfortPreference "[-1,1]" ;
-	brick:hasPoint smallOff:occ04_spt,
-		smallOff:occ04_ph,
-		smallOff:occ04_pf,
-		smallOff:occ04_drink,
-		smallOff:occ04_clo,
-		smallOff:occ04_act,
-		smallOff:occ04_sensation,
-		smallOff:occ04_comfort,
-		smallOff:occ04_met .
+	brick:hasPoint ASHP:occ04_spt,
+		ASHP:occ04_ph,
+		ASHP:occ04_pf,
+		ASHP:occ04_drink,
+		ASHP:occ04_clo,
+		ASHP:occ04_act,
+		ASHP:occ04_sensation,
+		ASHP:occ04_comfort,
+		ASHP:occ04_met .
 
-smallOff:occ04_spt a occ:ThermostatActionStream ;
+ASHP:occ04_spt a occ:ThermostatActionStream ;
 	brick:hasUnit unit:DEG_F ;
 	occ:surveyed false .
-smallOff:occ04_ph a occ:PortableHeaterActionStream ;
+ASHP:occ04_ph a occ:PortableHeaterActionStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false .
-smallOff:occ04_pf a occ:PortableFanActionStream ;
+ASHP:occ04_pf a occ:PortableFanActionStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false .
-smallOff:occ04_drink a occ:OccupantDrink ;
+ASHP:occ04_drink a occ:OccupantDrink ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "-1 cold drink, 0 no drink, 1 hot drink" .
-smallOff:occ04_clo a occ:OccupantClothingChange ;
+ASHP:occ04_clo a occ:OccupantClothingChange ;
 	brick:hasUnit occ:Clo ;
 	occ:surveyed false .
-smallOff:occ04_act a occ:OccupantActivityLevel ;
+ASHP:occ04_act a occ:OccupantActivityLevel ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "0 sitting, 1 walking" .
-smallOff:occ04_sensation a occ:OccupantThermalSensation ;
+ASHP:occ04_sensation a occ:OccupantThermalSensation ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "PMV value, [-3,3]" .
-smallOff:occ04_comfort a occ:OccupantAttitudeStream ;
+ASHP:occ04_comfort a occ:OccupantAttitudeStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "-1 cold, 0 neutral, 1 warm" .
-smallOff:occ04_met a occ:OccupantMetabolicRate ;
+ASHP:occ04_met a occ:OccupantMetabolicRate ;
 	brick:hasUnit occ:Met ;
 	occ:surveyed false .
 
 # OCCUPANT05
 # LOCATION INSIDE ZONE
-smallOff:occ05_loc a brick:Location ;
-	brick:isLocationof smallOff:occ05_pres,
-		smallOff:occ05_pheater,
-		smallOff:occ05_pfan ;
-	occ:isAssignedLocationOf smallOff:occ05 ;
+ASHP:occ05_loc a brick:Location ;
+	brick:isLocationof ASHP:occ05_pres,
+		ASHP:occ05_pheater,
+		ASHP:occ05_pfan ;
+	occ:isAssignedLocationOf ASHP:occ05 ;
 	rdf:label "13.845, 1.575" .
 
 # OCCUPANCY SENSOR
-smallOff:occ05_pres a occ:Occupancy_Presence_Sensor ;
+ASHP:occ05_pres a occ:Occupancy_Presence_Sensor ;
 	brick:hasUnit unit:UNITLESS .
 
 # PORTABLE EQUIPMENT
-smallOff:occ05_pheater a occ:Portable_Heater ;
-	occ:isAccessibleBy smallOff:occ05 ;
+ASHP:occ05_pheater a occ:Portable_Heater ;
+	occ:isAccessibleBy ASHP:occ05 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
-	brick:hasPoint smallOff:occ05_ph_power .
+	brick:hasPoint ASHP:occ05_ph_power .
 
-smallOff:occ05_ph_power a brick:Power_Sensor ;
+ASHP:occ05_ph_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
-smallOff:occ05_pfan a occ:Portable_Fan ;
-	occ:isAccessibleBy smallOff:occ05 ;
+ASHP:occ05_pfan a occ:Portable_Fan ;
+	occ:isAccessibleBy ASHP:occ05 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
-	brick:hasPoint smallOff:occ05_pf_power .
+	brick:hasPoint ASHP:occ05_pf_power .
 
-smallOff:occ05_pf_power a brick:Power_Sensor ;
+ASHP:occ05_pf_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
 # OCCUPANT
-smallOff:occ05 a occ:Occupant ;
+ASHP:occ05 a occ:Occupant ;
 	occ:Gender "Female" ;
 	occ:thermalComfortPreference "[-1,2]" ;
-	brick:hasPoint smallOff:occ05_spt,
-		smallOff:occ05_ph,
-		smallOff:occ05_pf,
-		smallOff:occ05_drink,
-		smallOff:occ05_clo,
-		smallOff:occ05_act,
-		smallOff:occ05_sensation,
-		smallOff:occ05_comfort,
-		smallOff:occ05_met .
+	brick:hasPoint ASHP:occ05_spt,
+		ASHP:occ05_ph,
+		ASHP:occ05_pf,
+		ASHP:occ05_drink,
+		ASHP:occ05_clo,
+		ASHP:occ05_act,
+		ASHP:occ05_sensation,
+		ASHP:occ05_comfort,
+		ASHP:occ05_met .
 
-smallOff:occ05_spt a occ:ThermostatActionStream ;
+ASHP:occ05_spt a occ:ThermostatActionStream ;
 	brick:hasUnit unit:DEG_F ;
 	occ:surveyed false .
-smallOff:occ05_ph a occ:PortableHeaterActionStream ;
+ASHP:occ05_ph a occ:PortableHeaterActionStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false .
-smallOff:occ05_pf a occ:PortableFanActionStream ;
+ASHP:occ05_pf a occ:PortableFanActionStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false .
-smallOff:occ05_drink a occ:OccupantDrink ;
+ASHP:occ05_drink a occ:OccupantDrink ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "-1 cold drink, 0 no drink, 1 hot drink" .
-smallOff:occ05_clo a occ:OccupantClothingChange ;
+ASHP:occ05_clo a occ:OccupantClothingChange ;
 	brick:hasUnit occ:Clo ;
 	occ:surveyed false .
-smallOff:occ05_act a occ:OccupantActivityLevel ;
+ASHP:occ05_act a occ:OccupantActivityLevel ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "0 sitting, 1 walking" .
-smallOff:occ05_sensation a occ:OccupantThermalSensation ;
+ASHP:occ05_sensation a occ:OccupantThermalSensation ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "PMV value, [-3,3]" .
-smallOff:occ05_comfort a occ:OccupantAttitudeStream ;
+ASHP:occ05_comfort a occ:OccupantAttitudeStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "-1 cold, 0 neutral, 1 warm" .
-smallOff:occ05_met a occ:OccupantMetabolicRate ;
+ASHP:occ05_met a occ:OccupantMetabolicRate ;
 	brick:hasUnit occ:Met ;
 	occ:surveyed false .
 
 # OCCUPANT06
 # LOCATION INSIDE ZONE
-smallOff:occ06_loc a brick:Location ;
-	brick:isLocationof smallOff:occ06_pres,
-		smallOff:occ06_pheater,
-		smallOff:occ06_pfan ;
-	occ:isAssignedLocationOf smallOff:occ06 ;
+ASHP:occ06_loc a brick:Location ;
+	brick:isLocationof ASHP:occ06_pres,
+		ASHP:occ06_pheater,
+		ASHP:occ06_pfan ;
+	occ:isAssignedLocationOf ASHP:occ06 ;
 	rdf:label "23.075, 1.575" .
 
 # OCCUPANCY SENSOR
-smallOff:occ06_pres a occ:Occupancy_Presence_Sensor ;
+ASHP:occ06_pres a occ:Occupancy_Presence_Sensor ;
 	brick:hasUnit unit:UNITLESS .
 
 # PORTABLE EQUIPMENT
-smallOff:occ06_pheater a occ:Portable_Heater ;
-	occ:isAccessibleBy smallOff:occ06 ;
+ASHP:occ06_pheater a occ:Portable_Heater ;
+	occ:isAccessibleBy ASHP:occ06 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
-	brick:hasPoint smallOff:occ06_ph_power .
+	brick:hasPoint ASHP:occ06_ph_power .
 
-smallOff:occ06_ph_power a brick:Power_Sensor ;
+ASHP:occ06_ph_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
-smallOff:occ06_pfan a occ:Portable_Fan ;
-	occ:isAccessibleBy smallOff:occ06 ;
+ASHP:occ06_pfan a occ:Portable_Fan ;
+	occ:isAccessibleBy ASHP:occ06 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
-	brick:hasPoint smallOff:occ06_pf_power .
+	brick:hasPoint ASHP:occ06_pf_power .
 
-smallOff:occ06_pf_power a brick:Power_Sensor ;
+ASHP:occ06_pf_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
 # OCCUPANT
-smallOff:occ06 a occ:Occupant ;
+ASHP:occ06 a occ:Occupant ;
 	occ:Gender "Female" ;
 	occ:thermalComfortPreference "[-2,3]" ;
-	brick:hasPoint smallOff:occ06_spt,
-		smallOff:occ06_ph,
-		smallOff:occ06_pf,
-		smallOff:occ06_drink,
-		smallOff:occ06_clo,
-		smallOff:occ06_act,
-		smallOff:occ06_sensation,
-		smallOff:occ06_comfort,
-		smallOff:occ06_met .
+	brick:hasPoint ASHP:occ06_spt,
+		ASHP:occ06_ph,
+		ASHP:occ06_pf,
+		ASHP:occ06_drink,
+		ASHP:occ06_clo,
+		ASHP:occ06_act,
+		ASHP:occ06_sensation,
+		ASHP:occ06_comfort,
+		ASHP:occ06_met .
 
-smallOff:occ06_spt a occ:ThermostatActionStream ;
+ASHP:occ06_spt a occ:ThermostatActionStream ;
 	brick:hasUnit unit:DEG_F ;
 	occ:surveyed false .
-smallOff:occ06_ph a occ:PortableHeaterActionStream ;
+ASHP:occ06_ph a occ:PortableHeaterActionStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false .
-smallOff:occ06_pf a occ:PortableFanActionStream ;
+ASHP:occ06_pf a occ:PortableFanActionStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false .
-smallOff:occ06_drink a occ:OccupantDrink ;
+ASHP:occ06_drink a occ:OccupantDrink ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "-1 cold drink, 0 no drink, 1 hot drink" .
-smallOff:occ06_clo a occ:OccupantClothingChange ;
+ASHP:occ06_clo a occ:OccupantClothingChange ;
 	brick:hasUnit occ:Clo ;
 	occ:surveyed false .
-smallOff:occ06_act a occ:OccupantActivityLevel ;
+ASHP:occ06_act a occ:OccupantActivityLevel ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "0 sitting, 1 walking" .
-smallOff:occ06_sensation a occ:OccupantThermalSensation ;
+ASHP:occ06_sensation a occ:OccupantThermalSensation ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "PMV value, [-3,3]" .
-smallOff:occ06_comfort a occ:OccupantAttitudeStream ;
+ASHP:occ06_comfort a occ:OccupantAttitudeStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "-1 cold, 0 neutral, 1 warm" .
-smallOff:occ06_met a occ:OccupantMetabolicRate ;
+ASHP:occ06_met a occ:OccupantMetabolicRate ;
 	brick:hasUnit occ:Met ;
 	occ:surveyed false .
 
 # OCCUPANT07
 # LOCATION INSIDE ZONE
-smallOff:occ07_loc a brick:Location ;
-	brick:isLocationof smallOff:occ07_pres,
-		smallOff:occ07_pheater,
-		smallOff:occ07_pfan ;
-	occ:isAssignedLocationOf smallOff:occ07 ;
+ASHP:occ07_loc a brick:Location ;
+	brick:isLocationof ASHP:occ07_pres,
+		ASHP:occ07_pheater,
+		ASHP:occ07_pfan ;
+	occ:isAssignedLocationOf ASHP:occ07 ;
 	rdf:label "24.875, 1.575" .
 
 # OCCUPANCY SENSOR
-smallOff:occ07_pres a occ:Occupancy_Presence_Sensor ;
+ASHP:occ07_pres a occ:Occupancy_Presence_Sensor ;
 	brick:hasUnit unit:UNITLESS .
 
 # PORTABLE EQUIPMENT
-smallOff:occ07_pheater a occ:Portable_Heater ;
-	occ:isAccessibleBy smallOff:occ07 ;
+ASHP:occ07_pheater a occ:Portable_Heater ;
+	occ:isAccessibleBy ASHP:occ07 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
-	brick:hasPoint smallOff:occ07_ph_power .
+	brick:hasPoint ASHP:occ07_ph_power .
 
-smallOff:occ07_ph_power a brick:Power_Sensor ;
+ASHP:occ07_ph_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
-smallOff:occ07_pfan a occ:Portable_Fan ;
-	occ:isAccessibleBy smallOff:occ07 ;
+ASHP:occ07_pfan a occ:Portable_Fan ;
+	occ:isAccessibleBy ASHP:occ07 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
-	brick:hasPoint smallOff:occ07_pf_power .
+	brick:hasPoint ASHP:occ07_pf_power .
 
-smallOff:occ07_pf_power a brick:Power_Sensor ;
+ASHP:occ07_pf_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
 # OCCUPANT
-smallOff:occ07 a occ:Occupant ;
+ASHP:occ07 a occ:Occupant ;
 	occ:Gender "Female" ;
 	occ:thermalComfortPreference "[0,3]" ;
-	brick:hasPoint smallOff:occ07_spt,
-		smallOff:occ07_ph,
-		smallOff:occ07_pf,
-		smallOff:occ07_drink,
-		smallOff:occ07_clo,
-		smallOff:occ07_act,
-		smallOff:occ07_sensation,
-		smallOff:occ07_comfort,
-		smallOff:occ07_met .
+	brick:hasPoint ASHP:occ07_spt,
+		ASHP:occ07_ph,
+		ASHP:occ07_pf,
+		ASHP:occ07_drink,
+		ASHP:occ07_clo,
+		ASHP:occ07_act,
+		ASHP:occ07_sensation,
+		ASHP:occ07_comfort,
+		ASHP:occ07_met .
 
-smallOff:occ07_spt a occ:ThermostatActionStream ;
+ASHP:occ07_spt a occ:ThermostatActionStream ;
 	brick:hasUnit unit:DEG_F ;
 	occ:surveyed false .
-smallOff:occ07_ph a occ:PortableHeaterActionStream ;
+ASHP:occ07_ph a occ:PortableHeaterActionStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false .
-smallOff:occ07_pf a occ:PortableFanActionStream ;
+ASHP:occ07_pf a occ:PortableFanActionStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false .
-smallOff:occ07_drink a occ:OccupantDrink ;
+ASHP:occ07_drink a occ:OccupantDrink ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "-1 cold drink, 0 no drink, 1 hot drink" .
-smallOff:occ07_clo a occ:OccupantClothingChange ;
+ASHP:occ07_clo a occ:OccupantClothingChange ;
 	brick:hasUnit occ:Clo ;
 	occ:surveyed false .
-smallOff:occ07_act a occ:OccupantActivityLevel ;
+ASHP:occ07_act a occ:OccupantActivityLevel ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "0 sitting, 1 walking" .
-smallOff:occ07_sensation a occ:OccupantThermalSensation ;
+ASHP:occ07_sensation a occ:OccupantThermalSensation ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "PMV value, [-3,3]" .
-smallOff:occ07_comfort a occ:OccupantAttitudeStream ;
+ASHP:occ07_comfort a occ:OccupantAttitudeStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "-1 cold, 0 neutral, 1 warm" .
-smallOff:occ07_met a occ:OccupantMetabolicRate ;
+ASHP:occ07_met a occ:OccupantMetabolicRate ;
 	brick:hasUnit occ:Met ;
 	occ:surveyed false .
 
 # OCCUPANT08
 # LOCATION INSIDE ZONE
-smallOff:occ08_loc a brick:Location ;
-	brick:isLocationof smallOff:occ08_pres,
-		smallOff:occ08_pheater,
-		smallOff:occ08_pfan ;
-	occ:isAssignedLocationOf smallOff:occ08 ;
+ASHP:occ08_loc a brick:Location ;
+	brick:isLocationof ASHP:occ08_pres,
+		ASHP:occ08_pheater,
+		ASHP:occ08_pfan ;
+	occ:isAssignedLocationOf ASHP:occ08 ;
 	rdf:label "16.1525, 3.425" .
 
 # OCCUPANCY SENSOR
-smallOff:occ08_pres a occ:Occupancy_Presence_Sensor ;
+ASHP:occ08_pres a occ:Occupancy_Presence_Sensor ;
 	brick:hasUnit unit:UNITLESS .
 
 # PORTABLE EQUIPMENT
-smallOff:occ08_pheater a occ:Portable_Heater ;
-	occ:isAccessibleBy smallOff:occ08 ;
+ASHP:occ08_pheater a occ:Portable_Heater ;
+	occ:isAccessibleBy ASHP:occ08 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
-	brick:hasPoint smallOff:occ08_ph_power .
+	brick:hasPoint ASHP:occ08_ph_power .
 
-smallOff:occ08_ph_power a brick:Power_Sensor ;
+ASHP:occ08_ph_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
-smallOff:occ08_pfan a occ:Portable_Fan ;
-	occ:isAccessibleBy smallOff:occ08 ;
+ASHP:occ08_pfan a occ:Portable_Fan ;
+	occ:isAccessibleBy ASHP:occ08 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
-	brick:hasPoint smallOff:occ08_pf_power .
+	brick:hasPoint ASHP:occ08_pf_power .
 
-smallOff:occ08_pf_power a brick:Power_Sensor ;
+ASHP:occ08_pf_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
 # OCCUPANT
-smallOff:occ08 a occ:Occupant ;
+ASHP:occ08 a occ:Occupant ;
 	occ:Gender "Male" ;
 	occ:thermalComfortPreference "[-3,1]" ;
-	brick:hasPoint smallOff:occ08_spt,
-		smallOff:occ08_ph,
-		smallOff:occ08_pf,
-		smallOff:occ08_drink,
-		smallOff:occ08_clo,
-		smallOff:occ08_act,
-		smallOff:occ08_sensation,
-		smallOff:occ08_comfort,
-		smallOff:occ08_met .
+	brick:hasPoint ASHP:occ08_spt,
+		ASHP:occ08_ph,
+		ASHP:occ08_pf,
+		ASHP:occ08_drink,
+		ASHP:occ08_clo,
+		ASHP:occ08_act,
+		ASHP:occ08_sensation,
+		ASHP:occ08_comfort,
+		ASHP:occ08_met .
 
-smallOff:occ08_spt a occ:ThermostatActionStream ;
+ASHP:occ08_spt a occ:ThermostatActionStream ;
 	brick:hasUnit unit:DEG_F ;
 	occ:surveyed false .
-smallOff:occ08_ph a occ:PortableHeaterActionStream ;
+ASHP:occ08_ph a occ:PortableHeaterActionStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false .
-smallOff:occ08_pf a occ:PortableFanActionStream ;
+ASHP:occ08_pf a occ:PortableFanActionStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false .
-smallOff:occ08_drink a occ:OccupantDrink ;
+ASHP:occ08_drink a occ:OccupantDrink ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "-1 cold drink, 0 no drink, 1 hot drink" .
-smallOff:occ08_clo a occ:OccupantClothingChange ;
+ASHP:occ08_clo a occ:OccupantClothingChange ;
 	brick:hasUnit occ:Clo ;
 	occ:surveyed false .
-smallOff:occ08_act a occ:OccupantActivityLevel ;
+ASHP:occ08_act a occ:OccupantActivityLevel ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "0 sitting, 1 walking" .
-smallOff:occ08_sensation a occ:OccupantThermalSensation ;
+ASHP:occ08_sensation a occ:OccupantThermalSensation ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "PMV value, [-3,3]" .
-smallOff:occ08_comfort a occ:OccupantAttitudeStream ;
+ASHP:occ08_comfort a occ:OccupantAttitudeStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "-1 cold, 0 neutral, 1 warm" .
-smallOff:occ08_met a occ:OccupantMetabolicRate ;
+ASHP:occ08_met a occ:OccupantMetabolicRate ;
 	brick:hasUnit occ:Met ;
 	occ:surveyed false .
 
 # OCCUPANT09
 # LOCATION INSIDE ZONE
-smallOff:occ09_loc a brick:Location ;
-	brick:isLocationof smallOff:occ09_pres,
-		smallOff:occ09_pheater,
-		smallOff:occ09_pfan ;
-	occ:isAssignedLocationOf smallOff:occ09 ;
+ASHP:occ09_loc a brick:Location ;
+	brick:isLocationof ASHP:occ09_pres,
+		ASHP:occ09_pheater,
+		ASHP:occ09_pfan ;
+	occ:isAssignedLocationOf ASHP:occ09 ;
 	rdf:label "2.825, 1.575" .
 
 # OCCUPANCY SENSOR
-smallOff:occ09_pres a occ:Occupancy_Presence_Sensor ;
+ASHP:occ09_pres a occ:Occupancy_Presence_Sensor ;
 	brick:hasUnit unit:UNITLESS .
 
 # PORTABLE EQUIPMENT
-smallOff:occ09_pheater a occ:Portable_Heater ;
-	occ:isAccessibleBy smallOff:occ09 ;
+ASHP:occ09_pheater a occ:Portable_Heater ;
+	occ:isAccessibleBy ASHP:occ09 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
-	brick:hasPoint smallOff:occ09_ph_power .
+	brick:hasPoint ASHP:occ09_ph_power .
 
-smallOff:occ09_ph_power a brick:Power_Sensor ;
+ASHP:occ09_ph_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
-smallOff:occ09_pfan a occ:Portable_Fan ;
-	occ:isAccessibleBy smallOff:occ09 ;
+ASHP:occ09_pfan a occ:Portable_Fan ;
+	occ:isAccessibleBy ASHP:occ09 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
-	brick:hasPoint smallOff:occ09_pf_power .
+	brick:hasPoint ASHP:occ09_pf_power .
 
-smallOff:occ09_pf_power a brick:Power_Sensor ;
+ASHP:occ09_pf_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
 # OCCUPANT
-smallOff:occ09 a occ:Occupant ;
+ASHP:occ09 a occ:Occupant ;
 	occ:Gender "Male" ;
 	occ:thermalComfortPreference "[-1,2]" ;
-	brick:hasPoint smallOff:occ09_spt,
-		smallOff:occ09_ph,
-		smallOff:occ09_pf,
-		smallOff:occ09_drink,
-		smallOff:occ09_clo,
-		smallOff:occ09_act,
-		smallOff:occ09_sensation,
-		smallOff:occ09_comfort,
-		smallOff:occ09_met .
+	brick:hasPoint ASHP:occ09_spt,
+		ASHP:occ09_ph,
+		ASHP:occ09_pf,
+		ASHP:occ09_drink,
+		ASHP:occ09_clo,
+		ASHP:occ09_act,
+		ASHP:occ09_sensation,
+		ASHP:occ09_comfort,
+		ASHP:occ09_met .
 
-smallOff:occ09_spt a occ:ThermostatActionStream ;
+ASHP:occ09_spt a occ:ThermostatActionStream ;
 	brick:hasUnit unit:DEG_F ;
 	occ:surveyed false .
-smallOff:occ09_ph a occ:PortableHeaterActionStream ;
+ASHP:occ09_ph a occ:PortableHeaterActionStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false .
-smallOff:occ09_pf a occ:PortableFanActionStream ;
+ASHP:occ09_pf a occ:PortableFanActionStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false .
-smallOff:occ09_drink a occ:OccupantDrink ;
+ASHP:occ09_drink a occ:OccupantDrink ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "-1 cold drink, 0 no drink, 1 hot drink" .
-smallOff:occ09_clo a occ:OccupantClothingChange ;
+ASHP:occ09_clo a occ:OccupantClothingChange ;
 	brick:hasUnit occ:Clo ;
 	occ:surveyed false .
-smallOff:occ09_act a occ:OccupantActivityLevel ;
+ASHP:occ09_act a occ:OccupantActivityLevel ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "0 sitting, 1 walking" .
-smallOff:occ09_sensation a occ:OccupantThermalSensation ;
+ASHP:occ09_sensation a occ:OccupantThermalSensation ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "PMV value, [-3,3]" .
-smallOff:occ09_comfort a occ:OccupantAttitudeStream ;
+ASHP:occ09_comfort a occ:OccupantAttitudeStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "-1 cold, 0 neutral, 1 warm" .
-smallOff:occ09_met a occ:OccupantMetabolicRate ;
+ASHP:occ09_met a occ:OccupantMetabolicRate ;
 	brick:hasUnit occ:Met ;
 	occ:surveyed false .
 
 # OCCUPANT10
 # LOCATION INSIDE ZONE
-smallOff:occ10_loc a brick:Location ;
-	brick:isLocationof smallOff:occ10_pres,
-		smallOff:occ10_pheater,
-		smallOff:occ10_pfan ;
-	occ:isAssignedLocationOf smallOff:occ10 ;
+ASHP:occ10_loc a brick:Location ;
+	brick:isLocationof ASHP:occ10_pres,
+		ASHP:occ10_pheater,
+		ASHP:occ10_pfan ;
+	occ:isAssignedLocationOf ASHP:occ10 ;
 	rdf:label "9.23, 1.575" .
 
 # OCCUPANCY SENSOR
-smallOff:occ10_pres a occ:Occupancy_Presence_Sensor ;
+ASHP:occ10_pres a occ:Occupancy_Presence_Sensor ;
 	brick:hasUnit unit:UNITLESS .
 
 # PORTABLE EQUIPMENT
-smallOff:occ10_pheater a occ:Portable_Heater ;
-	occ:isAccessibleBy smallOff:occ10 ;
+ASHP:occ10_pheater a occ:Portable_Heater ;
+	occ:isAccessibleBy ASHP:occ10 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
-	brick:hasPoint smallOff:occ10_ph_power .
+	brick:hasPoint ASHP:occ10_ph_power .
 
-smallOff:occ10_ph_power a brick:Power_Sensor ;
+ASHP:occ10_ph_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
-smallOff:occ10_pfan a occ:Portable_Fan ;
-	occ:isAccessibleBy smallOff:occ10 ;
+ASHP:occ10_pfan a occ:Portable_Fan ;
+	occ:isAccessibleBy ASHP:occ10 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
-	brick:hasPoint smallOff:occ10_pf_power .
+	brick:hasPoint ASHP:occ10_pf_power .
 
-smallOff:occ10_pf_power a brick:Power_Sensor ;
+ASHP:occ10_pf_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
 # OCCUPANT
-smallOff:occ10 a occ:Occupant ;
+ASHP:occ10 a occ:Occupant ;
 	occ:Gender "Female" ;
 	occ:thermalComfortPreference "[-2,3]" ;
-	brick:hasPoint smallOff:occ10_spt,
-		smallOff:occ10_ph,
-		smallOff:occ10_pf,
-		smallOff:occ10_drink,
-		smallOff:occ10_clo,
-		smallOff:occ10_act,
-		smallOff:occ10_sensation,
-		smallOff:occ10_comfort,
-		smallOff:occ10_met .
+	brick:hasPoint ASHP:occ10_spt,
+		ASHP:occ10_ph,
+		ASHP:occ10_pf,
+		ASHP:occ10_drink,
+		ASHP:occ10_clo,
+		ASHP:occ10_act,
+		ASHP:occ10_sensation,
+		ASHP:occ10_comfort,
+		ASHP:occ10_met .
 
-smallOff:occ10_spt a occ:ThermostatActionStream ;
+ASHP:occ10_spt a occ:ThermostatActionStream ;
 	brick:hasUnit unit:DEG_F ;
 	occ:surveyed false .
-smallOff:occ10_ph a occ:PortableHeaterActionStream ;
+ASHP:occ10_ph a occ:PortableHeaterActionStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false .
-smallOff:occ10_pf a occ:PortableFanActionStream ;
+ASHP:occ10_pf a occ:PortableFanActionStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false .
-smallOff:occ10_drink a occ:OccupantDrink ;
+ASHP:occ10_drink a occ:OccupantDrink ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "-1 cold drink, 0 no drink, 1 hot drink" .
-smallOff:occ10_clo a occ:OccupantClothingChange ;
+ASHP:occ10_clo a occ:OccupantClothingChange ;
 	brick:hasUnit occ:Clo ;
 	occ:surveyed false .
-smallOff:occ10_act a occ:OccupantActivityLevel ;
+ASHP:occ10_act a occ:OccupantActivityLevel ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "0 sitting, 1 walking" .
-smallOff:occ10_sensation a occ:OccupantThermalSensation ;
+ASHP:occ10_sensation a occ:OccupantThermalSensation ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "PMV value, [-3,3]" .
-smallOff:occ10_comfort a occ:OccupantAttitudeStream ;
+ASHP:occ10_comfort a occ:OccupantAttitudeStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "-1 cold, 0 neutral, 1 warm" .
-smallOff:occ10_met a occ:OccupantMetabolicRate ;
+ASHP:occ10_met a occ:OccupantMetabolicRate ;
 	brick:hasUnit occ:Met ;
 	occ:surveyed false .
 
 # OCCUPANT11
 # LOCATION INSIDE ZONE
-smallOff:occ11_loc a brick:Location ;
-	brick:isLocationof smallOff:occ11_pres,
-		smallOff:occ11_pheater,
-		smallOff:occ11_pfan ;
-	occ:isAssignedLocationOf smallOff:occ11 ;
+ASHP:occ11_loc a brick:Location ;
+	brick:isLocationof ASHP:occ11_pres,
+		ASHP:occ11_pheater,
+		ASHP:occ11_pfan ;
+	occ:isAssignedLocationOf ASHP:occ11 ;
 	rdf:label "18.46, 1.575" .
 
 # OCCUPANCY SENSOR
-smallOff:occ11_pres a occ:Occupancy_Presence_Sensor ;
+ASHP:occ11_pres a occ:Occupancy_Presence_Sensor ;
 	brick:hasUnit unit:UNITLESS .
 
 # PORTABLE EQUIPMENT
-smallOff:occ11_pheater a occ:Portable_Heater ;
-	occ:isAccessibleBy smallOff:occ11 ;
+ASHP:occ11_pheater a occ:Portable_Heater ;
+	occ:isAccessibleBy ASHP:occ11 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
-	brick:hasPoint smallOff:occ11_ph_power .
+	brick:hasPoint ASHP:occ11_ph_power .
 
-smallOff:occ11_ph_power a brick:Power_Sensor ;
+ASHP:occ11_ph_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
-smallOff:occ11_pfan a occ:Portable_Fan ;
-	occ:isAccessibleBy smallOff:occ11 ;
+ASHP:occ11_pfan a occ:Portable_Fan ;
+	occ:isAccessibleBy ASHP:occ11 ;
 	occ:degreeOfControl [ brick:value occ:OnOffControl ] ;
 	occ:modeOfControl [ brick:value occ:ManualMode ] ;
-	brick:hasPoint smallOff:occ11_pf_power .
+	brick:hasPoint ASHP:occ11_pf_power .
 
-smallOff:occ11_pf_power a brick:Power_Sensor ;
+ASHP:occ11_pf_power a brick:Power_Sensor ;
 	brick:hasUnit unit:W .
 
 # OCCUPANT
-smallOff:occ11 a occ:Occupant ;
+ASHP:occ11 a occ:Occupant ;
 	occ:Gender "Female" ;
 	occ:thermalComfortPreference "[0,3]" ;
-	brick:hasPoint smallOff:occ11_spt,
-		smallOff:occ11_ph,
-		smallOff:occ11_pf,
-		smallOff:occ11_drink,
-		smallOff:occ11_clo,
-		smallOff:occ11_act,
-		smallOff:occ11_sensation,
-		smallOff:occ11_comfort,
-		smallOff:occ11_met .
+	brick:hasPoint ASHP:occ11_spt,
+		ASHP:occ11_ph,
+		ASHP:occ11_pf,
+		ASHP:occ11_drink,
+		ASHP:occ11_clo,
+		ASHP:occ11_act,
+		ASHP:occ11_sensation,
+		ASHP:occ11_comfort,
+		ASHP:occ11_met .
 
-smallOff:occ11_spt a occ:ThermostatActionStream ;
+ASHP:occ11_spt a occ:ThermostatActionStream ;
 	brick:hasUnit unit:DEG_F ;
 	occ:surveyed false .
-smallOff:occ11_ph a occ:PortableHeaterActionStream ;
+ASHP:occ11_ph a occ:PortableHeaterActionStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false .
-smallOff:occ11_pf a occ:PortableFanActionStream ;
+ASHP:occ11_pf a occ:PortableFanActionStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false .
-smallOff:occ11_drink a occ:OccupantDrink ;
+ASHP:occ11_drink a occ:OccupantDrink ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "-1 cold drink, 0 no drink, 1 hot drink" .
-smallOff:occ11_clo a occ:OccupantClothingChange ;
+ASHP:occ11_clo a occ:OccupantClothingChange ;
 	brick:hasUnit occ:Clo ;
 	occ:surveyed false .
-smallOff:occ11_act a occ:OccupantActivityLevel ;
+ASHP:occ11_act a occ:OccupantActivityLevel ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "0 sitting, 1 walking" .
-smallOff:occ11_sensation a occ:OccupantThermalSensation ;
+ASHP:occ11_sensation a occ:OccupantThermalSensation ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "PMV value, [-3,3]" .
-smallOff:occ11_comfort a occ:OccupantAttitudeStream ;
+ASHP:occ11_comfort a occ:OccupantAttitudeStream ;
 	brick:hasUnit unit:UNITLESS ;
 	occ:surveyed false ;
 	rdfs:comment "-1 cold, 0 neutral, 1 warm" .
-smallOff:occ11_met a occ:OccupantMetabolicRate ;
+ASHP:occ11_met a occ:OccupantMetabolicRate ;
 	brick:hasUnit occ:Met ;
 	occ:surveyed false .
