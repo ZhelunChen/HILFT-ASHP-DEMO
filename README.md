@@ -33,30 +33,31 @@ Additional Information
 This document provides comprehensive details of the datasets generated from the project titled, "Hardware-in-the-Loop Laboratory Performance Verification of Flexible Building Equipment in a Typical Commercial Building." This project is financially supported by the U.S. Department of Energy under grant number EE-0009153. These datasets are obtained from extensive hardware-in-the-loop (HIL) testing of an Air Source Heat Pump (ASHP) system at the National Institute of Standards and Technology (NIST), conducted under a diverse range of conditions and operational settings. 
 
 ## Repository Structure
-**[data](data)** contains all datasets. This folder contains three levels of subfolders:
-- Level-1 (Atlanta, Buffalo, NewYork, Tucson): These folders present different locations where testing was performed.
-- Level-2 (Eff, Shed, Shift): These folders present various operational scenarios for the Air Source Heat Pump system.
-- Level-3 (Default, DenOcc, EnergySave, etc.): These folders present specific case scenarios under the respective operational scenario. These scenarios are further explained in [Test Scenarios](#test-scenarios).
+**[data](data)** contains all datasets organized into three levels of subfolders:
+- Level-1 (LOC: Atlanta, Buffalo, NewYork, Tucson): These folders present different locations where testing was performed.
+- Level-2 (GEB: Eff, Shed, Shift): These folders present various operational scenarios for the Air Source Heat Pump system.
+- Level-3 (VAR: Default, DenOcc, EnergySave, etc.): These folders present specific case scenarios under the respective operational scenario. These scenarios are further explained in [Test Scenarios](#test-scenarios).
+
+**[raw](raw)** contains all the raw datasets corresponding to each dataset in the [data](data) folder.
 
 **[assets](assets)** contains related figures, metadata, and data schema.
 
 ## Data Description
-For each scenario, there are two files: 
-- `data.csv`: Official dataset. Refer to [Metadata](assets/Metadata.csv) for data point definitions.
-- `raw.mat`: Raw HIL simulation data.
+Data point definitions can be found in [Metadata](assets/Metadata.csv).
+
 
 See [assets/HIL_ASHP_Brick_v1-3-0.ttl](assets/HIL_ASHP_Brick_v1-3-0.ttl) and [assets/HIL_ASHP_Brick_v1-3-0_DenseOcc.ttl](assets/HIL_ASHP_Brick_v1-3-0_DenseOcc.ttl) for the Brick models that represent the data points and their relationships. Specifically, the `_DenseOcc` version is associated with the data tested under the dense occupancy `DenOcc` scenario. These models were validated against [Brick v1.3.0](assets/Brick_v1-3-0.ttl) and its [occupancy extension](assets/brick_occ_ext.ttl). The following figure shows the data point relationships created under the Brick models.
 
 ![The Schematic Diagram of the ASHP Brick Model](assets/ASHP_Brick_Diagram.jpg)
 
 ## Methodology
-The datasets in this repository were generated using an Air Source Heat Pump Hardware-In-the-Loop Flexible load Testbed (i.e., ASHP HILFT). The figure below depicts the overall framework of a HILFT, which includes three parts: a virtual building model, a Grid-interactive Efficient Building (GEB) control model, and a hardware testbed. The virtual building model further includes a zone load model, an occupant comfort & behavior model, and an airflow model. More details about the development and integration of the HILFT can be found in [^1].
+The datasets were generated using an Air Source Heat Pump Hardware-In-the-Loop Flexible load Testbed (i.e., ASHP HILFT). The figure below depicts the overall framework of a HILFT, which includes three parts: a virtual building model, a Grid-interactive Efficient Building (GEB) control model, and a hardware testbed. The virtual building model further includes a zone load model, an occupant comfort & behavior model, and an airflow model. More details about the development and integration of the HILFT can be found in [^1].
 
 ![Framework of the HILFT and Associated Data Flow Schema](assets/HIL_Approach.jpg)
 
 ## Software Testbed
 ### Zone Load Model
-The zone load model was adapted from [Commercial Prototype Building Models](https://www.energycodes.gov/prototype-building-models). The highlighted zone, **Perimeter_ZN_1**, was selected for HIL study while other zones were served by ideal load systems within EnergyPlus. 
+The zone load model was adapted from the small office model of [Commercial Prototype Building Models](https://www.energycodes.gov/prototype-building-models). The highlighted zone, **Perimeter_ZN_1**, was selected for HIL study while other zones were served by ideal load systems within EnergyPlus. 
 
 ![Small Office Building](assets/Small_Office_Building.png)
 

@@ -13,28 +13,28 @@ ASHP:grid_signal_type a brick:Status ;
 	rdfs:comment "Grid signal type (0 no signal, 1 shedding request, 2 time-of-use price, 3 mod)" .
 ASHP:grid_signal_shed a brick:Load_Shed_Status ;
 	brick:hasUnit unit:UNITLESS ;
-	rdfs:comment "Grid signal shedding request (0 - no request, 1 - request)" .
+	rdfs:comment "Grid signal shedding request (0 no request, 1 request)" .
 ASHP:grid_signal_price a brick:Status ; 
 	rdf:label "unit: USD-PER-KiloW-HR" .
 
 # OUTDOOR EMULATOR
 ASHP:out_emulator a brick:HVAC_Equipment ;
-	brick:hasPoint ASHP:oa_temp_sim,
-		ASHP:oa_temp_dp_sim .
+	brick:hasPoint ASHP:oa_temp_spt_emu,
+		ASHP:oa_temp_dp_spt_emu .
 
-ASHP:oa_temp_sim a brick:Temperature_Setpoint ;
+ASHP:oa_temp_spt_emu a brick:Temperature_Setpoint ;
 	brick:hasUnit unit:DEG_F .
-ASHP:oa_temp_dp_sim a brick:Dewpoint_Setpoint ;
+ASHP:oa_temp_dp_spt_emu a brick:Dewpoint_Setpoint ;
 	brick:hasUnit unit:DEG_F .
 
 # ZONE EMULATOR
 ASHP:zn_emulator a brick:HVAC_Equipment ;
-	brick:hasPoint ASHP:zn_temp_sim,
-		ASHP:zn_temp_dp_sim .
+	brick:hasPoint ASHP:zn_temp_spt_emu,
+		ASHP:zn_temp_dp_spt_emu .
 
-ASHP:zn_temp_sim a brick:Temperature_Setpoint ;
+ASHP:zn_temp_spt_emu a brick:Temperature_Setpoint ;
 	brick:hasUnit unit:DEG_F .
-ASHP:zn_temp_dp_sim a brick:Dewpoint_Setpoint ;
+ASHP:zn_temp_dp_spt_emu a brick:Dewpoint_Setpoint ;
 	brick:hasUnit unit:DEG_F .
 
 # HVAC SYSTEM
@@ -93,11 +93,31 @@ ASHP:zn_temp_dp a brick:Zone_Air_Dewpoint_Sensor ;
 ASHP:local_pres a brick:Pressure_Sensor ;
 	brick:hasUnit unit:IN_H2O .
 
+# SIMULATED OUTDOOR
+ASHP:out_sim a brick:Site ;
+	brick:isLocationOf ASHP:bldg_sim ;
+	brick:hasPoint ASHP:oa_temp_sim,
+		ASHP:oa_temp_dp_sim .
+
+ASHP:oa_temp_sim a brick:Outside_Air_Temperature_Sensor ;
+	brick:hasUnit unit:DEG_F .
+ASHP:oa_temp_dp_sim a brick:Outside_Air_Dewpoint_Sensor ;
+	brick:hasUnit unit:DEG_F .
+
+# SIMULATED BUILDING
+ASHP:bldg_sim a brick:Building ;
+	brick:isLocationOf ASHP:zn_sim .
+
 # SIMULATED ZONE
 ASHP:zn_sim a brick:HVAC_Zone ;
     brick:isFedBy ASHP:heat_pump ;
 	brick:hasPoint ASHP:zn_temp_sim,
 		ASHP:zn_temp_dp_sim .
+
+ASHP:zn_temp_sim a brick:Zone_Air_Temperature_Sensor ;
+	brick:hasUnit unit:DEG_F .
+ASHP:zn_temp_dp_sim a brick:Zone_Air_Dewpoint_Sensor ;
+	brick:hasUnit unit:DEG_F .
 
 # THERMOSTAT
 ASHP:tstat a brick:Thermostat ;
