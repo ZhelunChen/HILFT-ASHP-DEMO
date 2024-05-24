@@ -133,7 +133,7 @@ ASHP:tstat a brick:Thermostat ;
 		ASHP:occ06,
 		ASHP:occ07 ;
 	brick:hasPoint ASHP:zn_temp_cspt, 
-		ASHP:zn_temp_hspt.
+		ASHP:zn_temp_hspt .
 
 ASHP:zn_temp_cspt a brick:Zone_Air_Cooling_Temperature_Setpoint ;
 	brick:hasUnit unit:DEG_F .
