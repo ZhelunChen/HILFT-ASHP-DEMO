@@ -46,9 +46,10 @@ This document provides comprehensive details of the datasets generated from the 
 Data point definitions can be found in [Metadata](assets/Metadata.csv).
 
 
-See [assets/HIL_ASHP_Brick_v1-3-0.ttl](assets/HIL_ASHP_Brick_v1-3-0.ttl) and [assets/HIL_ASHP_Brick_v1-3-0_DenseOcc.ttl](assets/HIL_ASHP_Brick_v1-3-0_DenseOcc.ttl) for the Brick models that represent the data points and their relationships. Specifically, the `_DenseOcc` version is associated with the data tested under the dense occupancy `DenOcc` scenario. These models were validated against [Brick v1.3.0](assets/Brick_v1-3-0.ttl) and its [occupancy extension](assets/brick_occ_ext.ttl). The following figure shows the data point relationships created under the Brick models.
+See [assets/HIL_ASHP_Brick_v1-3-0.ttl](assets/HIL_ASHP_Brick_v1-3-0.ttl) and [assets/HIL_ASHP_Brick_v1-3-0_DenseOcc.ttl](assets/HIL_ASHP_Brick_v1-3-0_DenseOcc.ttl) for the Brick models that represent the data points and their relationships. Specifically, the `_DenseOcc` version is associated with the data tested under the dense occupancy `DenOcc` scenario. These models were validated against [Brick v1.3.0](assets/Brick_v1-3-0.ttl) and its [occupancy extension](assets/brick_occ_ext.ttl). The following figures show the data points relationships created within the Brick models.
 
-![The Schematic Diagram of the ASHP Brick Model](assets/ASHP_Brick_Diagram.jpg)
+![The Schematic Diagram of the ASHP Brick Model (Relationships)](assets/ASHP_Brick_Diagram_Rel.jpg)
+![The Schematic Diagram of the ASHP Brick Model (Points)](assets/ASHP_Brick_Diagram_Points.jpg)
 
 ## Methodology
 The datasets were generated using an Air Source Heat Pump Hardware-In-the-Loop Flexible load Testbed (i.e., ASHP HILFT). The figure below depicts the overall framework of a HILFT, which includes three parts: a virtual building model, a Grid-interactive Efficient Building (GEB) control model, and a hardware testbed. The virtual building model further includes a zone load model, an occupant comfort & behavior model, and an airflow model. More details about the development and integration of the HILFT can be found in [^1].
