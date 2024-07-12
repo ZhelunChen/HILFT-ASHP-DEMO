@@ -14,6 +14,7 @@ Overview
 - [Introduction](#introduction)
 - [Repository Structure](#repository-structure)
 - [Data Description](#data-description)
+- [Data Schema](#data-schema)
 
 
 Technical Details
@@ -45,11 +46,16 @@ This document provides comprehensive details of the datasets generated from the 
 ## Data Description
 Data point definitions can be found in [Metadata](assets/Metadata.csv).
 
+## Data Schema
 
+### Brick
 See [assets/brick/HIL_ASHP_Brick_v1-3-0.ttl](assets/brick/HIL_ASHP_Brick_v1-3-0.ttl) and [assets/brick/HIL_ASHP_Brick_v1-3-0_DenseOcc.ttl](assets/brick/HIL_ASHP_Brick_v1-3-0_DenseOcc.ttl) for the Brick models that represent the data points and their relationships. Specifically, the `_DenseOcc` version is associated with the data tested under the dense occupancy `DenOcc` scenario. These models were validated against [Brick v1.3.0](assets/brick/Brick_v1-3-0.ttl) and its [occupancy extension](assets/brick/brick_occ_ext.ttl). The following figures show the data points relationships created within the Brick models.
 
 ![The Schematic Diagram of the ASHP Brick Model (Relationships)](assets/brick/ASHP_Brick_Diagram_Rel.jpg)
 ![The Schematic Diagram of the ASHP Brick Model (Points)](assets/brick/ASHP_Brick_Diagram_Points.jpg)
+
+### ASHRAE 223p
+See [assets/223p/WSHP.ttl](assets/223p/WSHP.ttl) for the ASHRAE 223p model. Please note that the 223p standard has not been officially published and is subject to change in the future. For more infomation about the 223p standard, please refer to [https://open223.info/](https://open223.info/).
 
 ## Methodology
 The datasets were generated using an Air Source Heat Pump Hardware-In-the-Loop Flexible load Testbed (i.e., ASHP HILFT). The figure below depicts the overall framework of a HILFT, which includes three parts: a virtual building model, a Grid-interactive Efficient Building (GEB) control model, and a hardware testbed. The virtual building model further includes a zone load model, an occupant comfort & behavior model, and an airflow model. More details about the development and integration of the HILFT can be found in [^1].
